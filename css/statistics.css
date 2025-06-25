@@ -1,173 +1,248 @@
+/* ======================================================= */
+/*                 GLOBAL CSS VARIABLES                    */
+/* ======================================================= */
 :root {
-  --page-bg: #3a64d8;
-  --sidebar-bg: #3a64d8;
-  --content-bg: #ffffff;
-  --logo-text-primary: #ffffff; /* White for HOUSE */
-  --logo-text-secondary: #ffd700; /* Yellow for ELECTRONICS */
-  --nav-item-text: #a9bdec;
-  --nav-item-active-bg: #ffffff;
-  --nav-item-active-text: #ffb800;
-  --nav-item-active-icon: #ffb800;
-  --title-text: #1e2a3b;
-  --card-label-text: #5a6a7f;
-  --card-value-text: #1e2a3b;
-  --card-icon-color: #ffb800;
-  --main-border-radius: 25px;
-  --card-border-radius: 20px;
-  --nav-item-border-radius: 12px;
+  --page-bg: #3a64d8; /* Couleur de fond principale de la page */
+  --sidebar-bg: #3a64d8; /* Couleur de fond de la barre latérale */
+  --content-bg: #ffffff; /* Couleur de fond de la zone de contenu principal */
+  --logo-text-primary: #ffffff; /* Couleur principale du texte du logo (si texte utilisé) */
+  --logo-text-secondary: #ffd700; /* Couleur secondaire du texte du logo (si texte utilisé) */
+  --nav-item-text: #a9bdec; /* Couleur du texte des éléments de navigation non actifs */
+  --nav-item-active-bg: #ffffff; /* Couleur de fond de l'élément de navigation actif */
+  --nav-item-active-text: #ffb800; /* Couleur du texte de l'élément de navigation actif */
+  --nav-item-active-icon: #ffb800; /* Couleur de l'icône de l'élément de navigation actif */
+  --title-text: #1e2a3b; /* Couleur du texte des titres (ex: "Dashboard") */
+  --card-label-text: #5a6a7f; /* Couleur du texte des étiquettes dans les cartes (ex: "Total Of Clients") */
+  --card-value-text: #1e2a3b; /* Couleur du texte des valeurs dans les cartes (ex: "50") */
+  --card-icon-color: #ffb800; /* Couleur des icônes dans les cartes statistiques */
+  --main-border-radius: 25px; /* Rayon de bordure principal pour les conteneurs */
+  --card-border-radius: 20px; /* Rayon de bordure pour les cartes statistiques */
+  --nav-item-border-radius: 12px; /* Rayon de bordure pour les éléments de navigation */
 }
 
+/* ======================================================= */
+/*                    GLOBAL RESET & DEFAULTS              */
+/* ======================================================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Supprime toutes les marges par défaut */
+  padding: 0; /* Supprime tous les paddings par défaut */
+  box-sizing: border-box; /* Modifie le modèle de boîte pour inclure padding et bordure dans la largeur/hauteur */
 }
 
+/* ======================================================= */
+/*                       BODY STYLING                      */
+/* ======================================================= */
 body {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--page-bg);
-  display: flex;
-  min-height: 100vh;
-  padding: 20px;
-  align-items: center; /* Pour centrer verticalement si la hauteur est fixe */
-  justify-content: center; /* Pour centrer horizontalement */
+  font-family: "Roboto", sans-serif; /* Définit la police principale pour toute la page */
+  background-color: var(
+    --page-bg
+  ); /* Applique la couleur de fond de la page définie dans les variables */
+  display: flex; /* Active Flexbox pour le body */
+  min-height: 100vh; /* Assure que le body prend au moins toute la hauteur de la fenêtre */
+  padding: 20px; /* Ajoute un padding autour du contenu du body */
+  align-items: center; /* Centre verticalement le contenu flex (le .container) */
+  justify-content: center; /* Centre horizontalement le contenu flex (le .container) */
 }
 
+/* ======================================================= */
+/*                 MAIN APPLICATION CONTAINER              */
+/* ======================================================= */
 .container {
-  display: flex;
-  width: 100%;
+  display: flex; /* Active Flexbox pour le conteneur principal (sidebar et content côte à côte) */
+  width: 100%; /* Le conteneur prend toute la largeur disponible jusqu'à max-width */
   max-width: 1200px; /* Largeur maximale de l'application */
-  min-height: 650px; /* Hauteur minimale, ajustez selon besoin */
-  background-color: var(--sidebar-bg); /* La partie sidebar utilise ce fond */
-  border-radius: var(--main-border-radius);
-  overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  min-height: 650px; /* Hauteur minimale de l'application */
+  background-color: var(
+    --sidebar-bg
+  ); /* Couleur de fond (principalement pour la zone sous la sidebar si elle est transparente ou plus petite) */
+  border-radius: var(
+    --main-border-radius
+  ); /* Applique le rayon de bordure principal */
+  overflow: hidden; /* Empêche le contenu de déborder des coins arrondis */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Ajoute une ombre portée pour un effet de profondeur */
 }
 
+/* ======================================================= */
+/*                    SIDEBAR STYLING                      */
+/* ======================================================= */
 .sidebar {
-  width: 260px; /* Largeur de la barre latérale */
-  background-color: var(--sidebar-bg);
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-shrink: 0;
+  width: 260px; /* Largeur fixe de la barre latérale */
+  background-color: var(
+    --sidebar-bg
+  ); /* Couleur de fond de la barre latérale */
+  padding: 30px 20px; /* Padding intérieur de la barre latérale */
+  display: flex; /* Active Flexbox pour la barre latérale */
+  flex-direction: column; /* Organise les éléments enfants (sidebar-top, sidebar-bottom) verticalement */
+  justify-content: space-between; /* Répartit l'espace verticalement entre sidebar-top et sidebar-bottom */
+  flex-shrink: 0; /* Empêche la barre latérale de rétrécir si l'espace est limité */
 }
 
+/* --- Section supérieure de la barre latérale --- */
 .sidebar-top {
-  /* Contient le logo et les liens de navigation principaux */
+  /* Contient le logo et les liens de navigation principaux. Pas de styles spécifiques ici, mais sert de conteneur. */
 }
 
+/* --- Styles du logo dans la barre latérale (configuré pour une image) --- */
 .logo {
-  margin-bottom: 40px;
-  padding-left: 10px;
-  text-align: center; /* Center the image if it's smaller than its container */
+  margin-bottom: 40px; /* Espace sous le logo */
+  padding-left: 10px; /* Léger padding à gauche pour alignement (si nécessaire) */
+  text-align: center; /* Centre l'image du logo si elle est plus petite que le conteneur .logo */
 }
 
+/* --- Styles pour l'image du logo --- */
 .logo img {
-  max-width: 100%; /* Ensure the image scales down if too large */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 50px; /* Limit the height of the logo */
+  max-width: 100%; /* Assure que l'image ne dépasse pas la largeur de son conteneur */
+  height: auto; /* Maintient les proportions de l'image */
+  max-height: 50px; /* Limite la hauteur maximale de l'image du logo */
 }
 
+/* ======================================================= */
+/*               NAVIGATION LINKS STYLING                  */
+/* ======================================================= */
 .nav-links {
-  list-style: none;
+  list-style: none; /* Supprime les puces des listes */
 }
 
+/* --- Style de chaque lien de navigation --- */
 .nav-links li a {
-  display: flex;
-  align-items: center;
-  padding: 12px 18px; /* Ajustement du padding */
-  margin-bottom: 10px;
-  border-radius: var(--nav-item-border-radius);
-  text-decoration: none;
-  color: var(--nav-item-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-weight: 500;
-  font-size: 14px; /* Taille de police pour les éléments de navigation */
+  display: flex; /* Active Flexbox pour aligner icône et texte */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  padding: 12px 18px; /* Padding intérieur des liens */
+  margin-bottom: 10px; /* Espace entre les liens de navigation */
+  border-radius: var(
+    --nav-item-border-radius
+  ); /* Rayon de bordure pour les liens */
+  text-decoration: none; /* Supprime le soulignement des liens */
+  color: var(--nav-item-text); /* Couleur du texte des liens */
+  transition: background-color 0.2s ease, color 0.2s ease; /* Transition douce pour le survol */
+  font-weight: 500; /* Épaisseur de la police pour le texte des liens */
+  font-size: 14px; /* Taille de la police pour le texte des liens */
 }
 
+/* --- Style des icônes dans les liens de navigation --- */
 .nav-links li a i {
-  margin-right: 15px;
-  font-size: 17px; /* Taille des icônes de navigation */
-  width: 20px;
-  text-align: center;
-  color: var(--nav-item-text);
+  margin-right: 15px; /* Espace à droite de l'icône, avant le texte */
+  font-size: 17px; /* Taille des icônes */
+  width: 20px; /* Largeur fixe pour l'icône, aide à l'alignement */
+  text-align: center; /* Centre l'icône si sa largeur est supérieure à celle du caractère */
+  color: var(--nav-item-text); /* Couleur des icônes (par défaut) */
 }
 
+/* --- Style pour l'élément de navigation actif --- */
 .nav-links li.active a {
-  background-color: var(--nav-item-active-bg);
-  color: var(--nav-item-active-text);
+  background-color: var(
+    --nav-item-active-bg
+  ); /* Couleur de fond pour le lien actif */
+  color: var(--nav-item-active-text); /* Couleur du texte pour le lien actif */
 }
 
+/* --- Style pour l'icône de l'élément de navigation actif --- */
 .nav-links li.active a i {
-  color: var(--nav-item-active-icon);
+  color: var(
+    --nav-item-active-icon
+  ); /* Couleur de l'icône pour le lien actif */
 }
 
+/* --- Style au survol pour les éléments de navigation non actifs --- */
 .nav-links li:not(.active) a:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: var(--logo-text-primary);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.08
+  ); /* Légère couleur de fond au survol */
+  color: var(
+    --logo-text-primary
+  ); /* Changement de couleur du texte au survol (vers blanc) */
 }
 
+/* --- Style pour les icônes au survol (éléments non actifs) --- */
 .nav-links li:not(.active) a:hover i {
-  color: var(--logo-text-primary);
+  color: var(
+    --logo-text-primary
+  ); /* Changement de couleur de l'icône au survol (vers blanc) */
 }
 
+/* --- Section inférieure de la barre latérale --- */
 .sidebar-bottom {
-  margin-top: auto; /* Pousse les liens du bas vers le bas */
+  margin-top: auto; /* Pousse cette section (contenant Settings, Log out) vers le bas de la sidebar */
 }
 
+/* ======================================================= */
+/*                 MAIN CONTENT AREA STYLING               */
+/* ======================================================= */
 .content {
-  flex-grow: 1;
-  background-color: var(--content-bg);
-  padding: 35px 40px; /* Padding ajusté */
-  border-top-left-radius: var(--main-border-radius);
-  border-bottom-left-radius: var(--main-border-radius);
+  flex-grow: 1; /* Permet à cette zone de prendre tout l'espace restant dans le .container */
+  background-color: var(
+    --content-bg
+  ); /* Couleur de fond de la zone de contenu */
+  padding: 35px 40px; /* Padding intérieur de la zone de contenu */
+  border-top-left-radius: var(
+    --main-border-radius
+  ); /* Arrondit le coin supérieur gauche pour s'adapter au .container */
+  border-bottom-left-radius: var(
+    --main-border-radius
+  ); /* Arrondit le coin inférieur gauche */
 }
 
+/* --- Style du titre principal dans la zone de contenu (ex: "Dashboard") --- */
 .title {
-  font-size: 28px; /* Taille du titre "Dashboard" */
-  font-weight: 700;
-  color: var(--title-text);
-  margin-bottom: 30px;
+  font-size: 28px; /* Taille de la police du titre */
+  font-weight: 700; /* Épaisseur de la police du titre */
+  color: var(--title-text); /* Couleur du texte du titre */
+  margin-bottom: 30px; /* Espace sous le titre */
 }
 
+/* ======================================================= */
+/*               STATISTICS CARDS CONTAINER                */
+/* ======================================================= */
 .stats-cards {
-  display: grid;
+  display: grid; /* Utilise CSS Grid pour organiser les cartes */
   grid-template-columns: repeat(
     auto-fit,
     minmax(200px, 1fr)
-  ); /* Grille responsive */
-  gap: 25px;
+  ); /* Crée des colonnes responsives: autant de colonnes que possible avec une largeur min de 200px, partageant l'espace équitablement */
+  gap: 25px; /* Espace entre les cartes (horizontalement et verticalement) */
 }
 
+/* ======================================================= */
+/*                  INDIVIDUAL CARD STYLING                */
+/* ======================================================= */
 .card {
-  background-color: var(--content-bg);
-  padding: 20px;
-  border-radius: var(--card-border-radius);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  border: 1px solid #f0f0f0; /* Bordure légère pour les cartes */
+  background-color: var(
+    --content-bg
+  ); /* Couleur de fond des cartes (peut être identique à .content ou différente) */
+  padding: 20px; /* Padding intérieur des cartes */
+  border-radius: var(
+    --card-border-radius
+  ); /* Rayon de bordure pour les cartes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Légère ombre portée pour les cartes */
+  text-align: center; /* Centre le contenu (icône, étiquette, valeur) à l'intérieur de la carte */
+  border: 1px solid #f0f0f0; /* Bordure légère pour délimiter les cartes */
 }
 
+/* --- Conteneur de l'icône dans la carte --- */
 .card-icon {
-  margin-bottom: 12px;
+  margin-bottom: 12px; /* Espace sous l'icône, avant l'étiquette */
 }
 
+/* --- Style des icônes dans les cartes --- */
 .card-icon i {
   font-size: 30px; /* Taille des icônes dans les cartes */
-  color: var(--card-icon-color);
+  color: var(--card-icon-color); /* Couleur des icônes dans les cartes */
 }
 
+/* --- Style de l'étiquette dans la carte (ex: "Total Of Clients") --- */
 .card-label {
-  font-size: 14px;
-  color: var(--card-label-text);
-  margin-bottom: 12px; /* Increased spacing for better visual separation */
-  font-weight: 500;
+  font-size: 14px; /* Taille de la police de l'étiquette */
+  color: var(--card-label-text); /* Couleur du texte de l'étiquette */
+  margin-bottom: 12px; /* MODIFIÉ: Espace sous l'étiquette augmenté pour une meilleure séparation visuelle */
+  font-weight: 500; /* Épaisseur de la police de l'étiquette */
 }
 
+/* --- Style de la valeur numérique dans la carte (ex: "50") --- */
 .card-value {
-  font-size: 30px; /* Taille des chiffres dans les cartes */
-  font-weight: 700;
-  color: var(--card-value-text);
+  font-size: 30px; /* Taille de la police de la valeur */
+  font-weight: 700; /* Épaisseur de la police de la valeur (plus gras) */
+  color: var(--card-value-text); /* Couleur du texte de la valeur */
 }
