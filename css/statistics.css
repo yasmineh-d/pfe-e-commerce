@@ -76,12 +76,6 @@ body {
   justify-content: space-between; /* Répartit l'espace verticalement entre sidebar-top et sidebar-bottom */
   flex-shrink: 0; /* Empêche la barre latérale de rétrécir si l'espace est limité */
 }
-
-/* --- Section supérieure de la barre latérale --- */
-.sidebar-top {
-  /* Contient le logo et les liens de navigation principaux. Pas de styles spécifiques ici, mais sert de conteneur. */
-}
-
 /* --- Styles du logo dans la barre latérale (configuré pour une image) --- */
 .logo {
   margin-bottom: 40px; /* Espace sous le logo */
