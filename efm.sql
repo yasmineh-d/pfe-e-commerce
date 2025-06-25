@@ -105,13 +105,13 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`id_Produit`, `libelle_Produit`, `product_name`, `Description_Produit`, `prix_de_vente`, `image`, `id_Categories`) VALUES
-(1, 'Aspirateur sans sac', 'CyclonePro 3000', 'Aspirateur puissant sans sac avec filtre HEPA', 899.00, 'images/Ventilador_Mini.png', 1),
-(2, 'Purificateur d’air', 'AirPure Smart X5', 'Purificateur connecté avec capteur de qualité de l’air', 1199.00, 'purificateur.jpg', 1),
-(3, 'Cafetière programmable', 'AromaBrew 12T', 'Cafetière programmable 12 tasses avec minuterie', 499.00, 'cafe.jpg', 2),
-(4, 'Fer à repasser vapeur', 'SteamGlide Plus', 'Fer à vapeur avec semelle céramique anti-adhésive', 299.00, 'fer.jpg', 2),
+(1, 'Aspirateur sans sac', 'CyclonePro 3000', 'Aspirateur puissant sans sac avec filtre HEPA', 899.00, 'Ventilador_Mini.png', 1),
+(2, 'Purificateur d’air', 'AirPure Smart X5', 'Purificateur connecté avec capteur de qualité de l’air', 1199.00, 'Air-Purifier.jpg', 1),
+(3, 'Cafetière programmable', 'AromaBrew 12T', 'Cafetière programmable 12 tasses avec minuterie', 499.00, 'machine coffe.png', 2),
+(4, 'Fer à repasser vapeur', 'SteamGlide Plus', 'Fer à vapeur avec semelle céramique anti-adhésive', 299.00, 'vapeurcro.png', 2),
 (5, 'Mini lave-vaisselle', 'EcoWash Compact', 'Lave-vaisselle compact à faible consommation d’eau', 1599.00, 'lave-vaisselle.jpg', 3),
-(6, 'Mixeur multifonction', 'KitchenMix Pro', 'Mixeur puissant pour smoothies, soupes et glaçons', 699.00, 'mixeur.jpg', 2),
-(7, 'Ventilateur sur pied', 'CoolBreeze X2', 'Ventilateur réglable 3 vitesses avec télécommande', 349.00, 'ventilateur.jpg', 4);
+(6, 'Mixeur multifonction', 'KitchenMix Pro', 'Mixeur puissant pour smoothies, soupes et glaçons', 699.00, 'kitchen_blender.png', 2),
+(7, 'Ventilateur sur pied', 'CoolBreeze X2', 'Ventilateur réglable 3 vitesses avec télécommande', 349.00, 'Mini Ventilador.jpg', 4);
 
 -- --------------------------------------------------------
 
