@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/sss.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="shopping-cart-section">
+        <div class="cart-header">
+          <h1>Shopping Cart</h1>
+          <span class="item-count">3 Items</span>
+        </div>
+        <hr />
+        <div class="cart-table-headers">
+          <span class="header-details">PRODUCT DETAILS</span>
+          <span class="header-quantity">QUANTITY</span>
+          <span class="header-price">PRICE</span>
+          <span class="header-total">TOTAL</span>
+        </div>
+
+        <!-- Item 1 -->
+        <div class="cart-item">
+          <div class="product-details">
+            <img
+              src="https://via.placeholder.com/80x50.png?text=TV"
+              alt="Table de cuisson à induction"
+            />
+            <div class="info">
+              <span class="product-name"
+                >Table de cuisson à induction SI364FXM</span
+              >
+            </div>
+          </div>
+          <div class="quantity-selector">
+            <button>-</button>
+            <input type="text" value="1" readonly />
+            <button>+</button>
+          </div>
+          <div class="item-price">14 990,90 DH</div>
+          <div class="item-total">14 990,90 DH</div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="cart-item">
+          <div class="product-details">
+            <img
+              src="https://via.placeholder.com/80x80.png?text=Remote"
+              alt="Télécommande Vocale"
+            />
+            <div class="info">
+              <span class="product-name">Télécommande Vocale</span>
+            </div>
+          </div>
+          <div class="quantity-selector">
+            <button>-</button>
+            <input type="text" value="3" readonly />
+            <button>+</button>
+          </div>
+          <div class="item-price">120.00 DH</div>
+          <div class="item-total">360.00 DH</div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="cart-item">
+          <div class="product-details">
+            <img
+              src="https://via.placeholder.com/80x50.png?text=Smart+TV"
+              alt="Smart TV 40 LED Android TV"
+            />
+            <div class="info">
+              <span class="product-name">Smart TV 40 LED Android TV</span>
+            </div>
+          </div>
+          <div class="quantity-selector">
+            <button>-</button>
+            <input type="text" value="1" readonly />
+            <button>+</button>
+          </div>
+          <div class="item-price">13834,94 DH</div>
+          <div class="item-total">13834,94 DH</div>
+        </div>
+      </div>
+
+      <div class="order-summary-section">
+        <h2>Order Summary</h2>
+        <hr />
+        <div class="summary-line">
+          <span class="label">ITEMS 3</span>
+          <span class="value">3300.00 DH</span>
+        </div>
+        <div class="summary-line">
+          <span class="label">SHOPPING</span>
+        </div>
+        <select>
+          <option selected>Standard Delivery - 50.00 DH</option>
+        </select>
+
+        <span class="promo-label">PROMO CODE</span>
+        <input type="text" placeholder="Enter your code" />
+        <button class="apply-button">APPLY</button>
+
+        <hr />
+
+        <div class="summary-line total-cost-line">
+          <span class="label">TOTAL COST</span>
+          <span class="value">3350.00 DH</span>
+        </div>
+
+        <button class="checkout-button">CHEKOUT</button>
+      </div>
+    </div>
+  </body>
+</html>

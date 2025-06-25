@@ -1,0 +1,595 @@
+/* ======================================================= */
+/* === L'CODE MNEJME3: HOME.CSS + ABOUT.CSS === */
+/* ======================================================= */
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+}
+
+/* ========================
+       HEADER
+    ======================== */
+.top-bar {
+  background-color: #3771c8;
+  color: #fcd34d;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px 0;
+}
+
+.main-header {
+  background-color: #3771c8;
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1px;
+  flex-wrap: wrap;
+}
+
+.header-content {
+  background-color: #ffffff;
+  border-radius: 30px 0px 0px 0px;
+  padding: 12px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+  max-height: 57px;
+  margin-left: 9px;
+  margin-top: -15px;
+  position: relative;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 115px;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  position: relative;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+  color: #1e90ff;
+}
+
+.nav-menu ul li a.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #000;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.icon-circle {
+  background-color: #f1f3f6;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.icon-circle i {
+  font-size: 1rem;
+  color: #000;
+}
+
+.icon-circle:hover {
+  background-color: #e0e7ff;
+}
+
+.signin-btn {
+  padding: 6px 16px;
+  border: 1px solid #3771c8;
+  color: #3771c8;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: #ffdd55;
+  color: #3771c8;
+}
+
+/* ======================================================= */
+/* === SECTION 1: ABOUT US (TO MATCH LATEST IMAGE)    === */
+/* ======================================================= */
+.about-us-container {
+  position: relative;
+  display: flex; /* Use flexbox for side-by-side columns */
+  /* Align items to the top of the flex container */
+  /* Or your desired max-width for the section */
+  width: 100%;
+}
+
+.about-image-wrapper {
+  flex: 0 0 700px; /* TUNE: Image takes 45% of the width. Adjust (e.g., 40% to 50%).
+                           The first '0' means it won't grow.              The second '0' means it won't shrink. */
+  border-radius: 0 35px 35px 0; /* Rounds ONLY top-right and bottom-right. TUNE '35px' for curve. */
+  overflow: hidden; /* Ensures image is clipped by the rounded corners. */
+  align-self: stretch; /* Makes image wrapper take full height of flex container if text column is taller */
+  height: 450px;
+  width: 900px;
+  margin-bottom: 150px;
+}
+
+.about-image-wrapper img {
+  display: block; /* Removes any extra space below the image */
+  width: 100%;
+  height: 100%; /* Make image fill the height of its wrapper */
+  object-fit: cover; /* Ensures image covers the area, might crop */
+}
+
+.about-us-title {
+  font-size: 2.8rem; /* TUNE: Adjust font size (e.g., 2.8rem to 3.5rem) */
+  font-weight: 700; /* Bold */
+  color: #1a1a1a; /* Dark text color */
+  margin-top: 40px; /* TUNE: Adjust top margin to align with image top. Could be slightly positive or negative.
+                           Start with 0, or if image looks higher, maybe 10px. */
+  margin-bottom: 25px; /* TUNE: Space between the title and the gray info box below it */
+  line-height: 1.2;
+  margin-left: 75px;
+}
+
+.about-info-box {
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 30px 35px; /* TUNE: Internal padding of the box */
+  border-radius: 35px; /* TUNE: Roundness of ALL corners of the info box. (e.g. 20px to 30px) */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07); /* Subtle shadow */
+  margin-top: 40px;
+  width: 600px;
+  position: absolute;
+  left: 600px;
+}
+
+.about-info-box p {
+  font-size: 1rem; /* TUNE: Text size inside info box */
+  line-height: 1.65;
+  color: #333333;
+  margin-bottom: 1.15rem;
+}
+
+.about-info-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ======================================================= */
+/* === SECTION 2: OUR JOURNEY (JDIDA) === */
+/* ======================================================= */
+.our-journey-section {
+  padding: 80px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.journey-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  margin-left: 150px;
+}
+
+.journey-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.journey-text-container {
+  flex: 1 1 45%;
+  margin-left: 30px;
+}
+
+.journey-text-box {
+  background-color: #e9ecef;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.journey-text-box p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333333;
+  margin-bottom: 1.5rem;
+}
+
+.journey-text-box p:last-child {
+  margin-bottom: 0;
+}
+
+.journey-images-container {
+  flex: 1 1 55%;
+  position: relative;
+  min-height: 550px;
+}
+
+.journey-image {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 5px solid white;
+}
+
+.journey-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.journey-image.img-1 {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: 5%;
+  z-index: 3;
+}
+
+.journey-image.img-2 {
+  width: 380px;
+  height: 380px;
+  top: 100px;
+  right: -34px;
+  z-index: 2;
+}
+
+.journey-image.img-3 {
+  width: 380px;
+  height: 380px;
+  bottom: -17px;
+  left: 0%;
+  z-index: 1;
+}
+
+/* ========================
+       FOOTER
+    ======================== */
+.site-footer {
+  background-color: #3771c8;
+  color: #ffffff;
+  padding: 60px 0 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a,
+.footer-legal-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover,
+.footer-legal-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-column .contact-icons a {
+  display: block;
+  margin-bottom: 10px;
+}
+.footer-column .contact-icons a:last-child {
+  margin-bottom: 0;
+}
+
+.contact-icons img {
+  width: 36px;
+  height: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.footer-column .contact-icons a:hover img {
+  transform: scale(1.15);
+}
+
+.social-icons .social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  margin-right: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.social-icons .social-icon:hover {
+  transform: scale(1.1);
+}
+
+.facebook-bg {
+  background-color: #1877f2;
+}
+.twitter-bg {
+  background-color: #1da1f2;
+}
+.linkedin-bg {
+  background-color: #0a66c2;
+}
+.instagram-bg {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 0 20px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: #d1d5db;
+}
+
+.footer-legal-links span {
+  margin: 0 10px;
+}
+
+/* ======================================================= */
+/* === RESPONSIVE DESIGN (L'KOLLCHI) === */
+/* ======================================================= */
+
+@media (max-width: 1100px) {
+  /* Journey Section */
+  .journey-content-wrapper {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .journey-title {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+  .journey-text-container {
+    width: 100%;
+    order: 2;
+    margin-left: 0;
+  }
+  .journey-images-container {
+    width: 100%;
+    min-height: 450px;
+    order: 1;
+  }
+  .journey-image.img-1 {
+    width: 300px;
+    height: 300px;
+  }
+  .journey-image.img-2 {
+    width: 300px;
+    height: 300px;
+    top: 80px;
+  }
+  .journey-image.img-3 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* MODIFICATIONS POUR SECTION 1 (ABOUT US) F LES ECRANS SGHAR */
+  .about-us-container {
+    flex-direction: column;
+    padding: 40px 20px;
+    max-width: 100%; /* Bach takhod l3erd kamel dyal l'ecran sghir */
+    margin: 40px auto; /* Nqess chwiya mn l'espace lfoq w lte7t */
+  }
+  .about-image-wrapper {
+    width: 100%;
+    flex-basis: auto;
+    border-radius: 25px; /* Tdwira l jwanb kamlin bach tji mzyana mli tkoun bo7dha lfoq */
+    max-height: 300px;
+    margin-bottom: 0; /* Kan7eydo l'espace bin tswira w lktaba hit lktaba atji foqha */
+  }
+  .main-text-column {
+    width: 90%; /* Nsghroha chwiya bach matlsse9ch f jnab */
+    margin: -60px auto 0 auto; /* MODIFIÉ: margin-left w right auto bach tji f lwest, w margin-top negatif bach tji foq tswira */
+    flex-basis: auto;
+  }
+  .about-us-title {
+    position: static; /* Mayبقاش absolute bach yji f lflux normal */
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    left: auto; /* Kan7eydo left */
+  }
+  .about-info-box {
+    margin-top: 0; /* Kan7eydo l margin-top hit l title wella static */
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header */
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 30px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .header-actions {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  /* Footer */
+  .footer-column {
+    flex-basis: 45%;
+  }
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Section 1 (About Us) pour écrans plus petits encore */
+  .about-image-wrapper {
+    max-height: 250px;
+  }
+  .about-us-title {
+    font-size: 2.2rem;
+  }
+  .main-text-column {
+    width: 95%; /* Nzid nqrbha l jnab chwiya */
+    margin-top: -50px; /* Nqel mn l'overlap */
+  }
+}
+
+@media (max-width: 600px) {
+  /* Journey Section */
+  .our-journey-section {
+    padding: 40px 20px;
+  }
+  .journey-images-container {
+    min-height: 350px;
+  }
+  .journey-image.img-1 {
+    width: 220px;
+    height: 220px;
+    left: 0;
+    top: -60px;
+  }
+  .journey-image.img-2 {
+    width: 220px;
+    height: 220px;
+    top: 60px;
+    right: 0;
+  }
+  .journey-image.img-3 {
+    width: 220px;
+    height: 220px;
+    bottom: 0;
+    left: 10%;
+  }
+  .journey-text-box {
+    padding: 25px;
+  }
+
+  /* MODIFICATIONS POUR SECTION 1 (ABOUT US) F LES ECRANS BZAFF SGHAR */
+  .about-us-title {
+    font-size: 2rem;
+  }
+  .about-info-box {
+    padding: 1rem;
+  }
+  .main-text-column {
+    margin-top: -40px; /* Nzid nqel mn l'overlap */
+  }
+}
+
+@media (max-width: 576px) {
+  /* Footer */
+  .footer-main {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+  }
+}

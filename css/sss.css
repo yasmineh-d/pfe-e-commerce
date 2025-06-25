@@ -1,0 +1,245 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f2f5; /* Light grey background for the page */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #ffffff; /* White background for the cart area */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shopping-cart-section {
+  flex: 2; /* Takes up 2/3 of the space */
+  padding: 30px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-header h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.cart-header .item-count {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.shopping-cart-section hr {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.cart-table-headers {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.cart-table-headers .header-quantity,
+.cart-table-headers .header-price,
+.cart-table-headers .header-total {
+  text-align: right;
+}
+.cart-table-headers .header-quantity {
+  text-align: center; /* As per image for quantity label */
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.cart-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+}
+
+.product-details img {
+  width: 80px;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  margin-right: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.product-details .info .product-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center quantity selector block */
+}
+
+.quantity-selector button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #555;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.quantity-selector button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.quantity-selector button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.quantity-selector input {
+  width: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  padding: 5px 0;
+  font-size: 14px;
+  height: 20px; /* Match button height */
+}
+
+.item-price,
+.item-total {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  color: #333;
+}
+
+.order-summary-section {
+  flex: 1; /* Takes up 1/3 of the space */
+  padding: 30px;
+  background-color: #e9e7f5; /* Light purple background */
+}
+
+.order-summary-section h2 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.order-summary-section hr {
+  border: 0;
+  border-top: 1px solid #d1cfe1;
+  margin: 20px 0;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.summary-line .label {
+  font-weight: 500;
+  color: #333;
+}
+.summary-line .value {
+  font-weight: 500;
+  color: #333;
+}
+
+.order-summary-section select,
+.order-summary-section input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.order-summary-section select {
+  background-color: white; /* Ensure select background is white */
+}
+
+.promo-label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.apply-button,
+.checkout-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px; /* More rounded corners for buttons */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button {
+  background-color: #4a72d3; /* Blue from image */
+  color: white;
+  margin-bottom: 20px; /* Space before next hr */
+  padding: 10px; /* Slightly smaller padding */
+  border-radius: 25px; /* More pronounced rounding */
+}
+.apply-button:hover {
+  background-color: #3959a7;
+}
+
+.total-cost-line {
+  margin-top: 20px; /* Space after hr */
+}
+.total-cost-line .label {
+  font-weight: bold;
+}
+.total-cost-line .value {
+  font-weight: bold;
+}
+
+.checkout-button {
+  background-color: #4a72d3; /* Blue from image */
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 25px; /* More pronounced rounding */
+}
+.checkout-button:hover {
+  background-color: #3959a7;
+}
