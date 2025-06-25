@@ -1,5 +1,4 @@
 <?php
-<?php
 session_start(); // Darouri nbda session bach n3arfou wach m-loggi wla la
 
 // HNA L'KHADMA L'MOHIMA: Tcheckiw wach m-loggi
@@ -14,7 +13,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 // This PHP block handles database connection...
 // ... (kolchi l'code l'ba9i dialk kayji hna)
 
-?>
+
 // This PHP block handles database connection and data fetching for dashboard statistics.
 
 // Database connection parameters
