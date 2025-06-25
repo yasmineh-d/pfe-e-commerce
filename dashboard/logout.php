@@ -24,6 +24,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirect to the sign-in page or home page
-header("Location: ../sign_in.php"); // Adjust the path as necessary
+header("Location: login.php"); // Adjust the path as necessary
 exit();
 ?>

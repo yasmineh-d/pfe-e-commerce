@@ -1,4 +1,20 @@
 <?php
+<?php
+session_start(); // Darouri nbda session bach n3arfou wach m-loggi wla la
+
+// HNA L'KHADMA L'MOHIMA: Tcheckiw wach m-loggi
+// Ila l'variable 'admin_logged_in' ma kaynach awla la valeur dialha ماشي true
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    // Sifto l page dial login
+    header('Location: login.php');
+    exit; // W9ef l'execution dial l'code hna bach maykemelch
+}
+
+// L'code l'9dim dialk ghaybda men hna
+// This PHP block handles database connection...
+// ... (kolchi l'code l'ba9i dialk kayji hna)
+
+?>
 // This PHP block handles database connection and data fetching for dashboard statistics.
 
 // Database connection parameters
