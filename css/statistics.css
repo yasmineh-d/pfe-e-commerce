@@ -1,0 +1,173 @@
+:root {
+  --page-bg: #3a64d8;
+  --sidebar-bg: #3a64d8;
+  --content-bg: #ffffff;
+  --logo-text-primary: #ffffff; /* White for HOUSE */
+  --logo-text-secondary: #ffd700; /* Yellow for ELECTRONICS */
+  --nav-item-text: #a9bdec;
+  --nav-item-active-bg: #ffffff;
+  --nav-item-active-text: #ffb800;
+  --nav-item-active-icon: #ffb800;
+  --title-text: #1e2a3b;
+  --card-label-text: #5a6a7f;
+  --card-value-text: #1e2a3b;
+  --card-icon-color: #ffb800;
+  --main-border-radius: 25px;
+  --card-border-radius: 20px;
+  --nav-item-border-radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--page-bg);
+  display: flex;
+  min-height: 100vh;
+  padding: 20px;
+  align-items: center; /* Pour centrer verticalement si la hauteur est fixe */
+  justify-content: center; /* Pour centrer horizontalement */
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px; /* Largeur maximale de l'application */
+  min-height: 650px; /* Hauteur minimale, ajustez selon besoin */
+  background-color: var(--sidebar-bg); /* La partie sidebar utilise ce fond */
+  border-radius: var(--main-border-radius);
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar {
+  width: 260px; /* Largeur de la barre latérale */
+  background-color: var(--sidebar-bg);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.sidebar-top {
+  /* Contient le logo et les liens de navigation principaux */
+}
+
+.logo {
+  margin-bottom: 40px;
+  padding-left: 10px;
+  text-align: center; /* Center the image if it's smaller than its container */
+}
+
+.logo img {
+  max-width: 100%; /* Ensure the image scales down if too large */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 50px; /* Limit the height of the logo */
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px; /* Ajustement du padding */
+  margin-bottom: 10px;
+  border-radius: var(--nav-item-border-radius);
+  text-decoration: none;
+  color: var(--nav-item-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+  font-size: 14px; /* Taille de police pour les éléments de navigation */
+}
+
+.nav-links li a i {
+  margin-right: 15px;
+  font-size: 17px; /* Taille des icônes de navigation */
+  width: 20px;
+  text-align: center;
+  color: var(--nav-item-text);
+}
+
+.nav-links li.active a {
+  background-color: var(--nav-item-active-bg);
+  color: var(--nav-item-active-text);
+}
+
+.nav-links li.active a i {
+  color: var(--nav-item-active-icon);
+}
+
+.nav-links li:not(.active) a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--logo-text-primary);
+}
+
+.nav-links li:not(.active) a:hover i {
+  color: var(--logo-text-primary);
+}
+
+.sidebar-bottom {
+  margin-top: auto; /* Pousse les liens du bas vers le bas */
+}
+
+.content {
+  flex-grow: 1;
+  background-color: var(--content-bg);
+  padding: 35px 40px; /* Padding ajusté */
+  border-top-left-radius: var(--main-border-radius);
+  border-bottom-left-radius: var(--main-border-radius);
+}
+
+.title {
+  font-size: 28px; /* Taille du titre "Dashboard" */
+  font-weight: 700;
+  color: var(--title-text);
+  margin-bottom: 30px;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Grille responsive */
+  gap: 25px;
+}
+
+.card {
+  background-color: var(--content-bg);
+  padding: 20px;
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  border: 1px solid #f0f0f0; /* Bordure légère pour les cartes */
+}
+
+.card-icon {
+  margin-bottom: 12px;
+}
+
+.card-icon i {
+  font-size: 30px; /* Taille des icônes dans les cartes */
+  color: var(--card-icon-color);
+}
+
+.card-label {
+  font-size: 14px;
+  color: var(--card-label-text);
+  margin-bottom: 12px; /* Increased spacing for better visual separation */
+  font-weight: 500;
+}
+
+.card-value {
+  font-size: 30px; /* Taille des chiffres dans les cartes */
+  font-weight: 700;
+  color: var(--card-value-text);
+}
