@@ -115,7 +115,7 @@ $result = $stmt->get_result();
               <i class="far fa-heart"></i>
             </div>
           </a>
-          <a href="#">
+          <a href="shopping_cart.php">
             <div class="icon-circle">
               <i class="fas fa-shopping-bag"></i>
             </div>
