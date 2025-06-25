@@ -108,6 +108,7 @@ mysqli_close($conn);
                             <th>Description</th>
                             <th>Price</th>
                             <th>Image</th>
+                            <th>Actions</th> <!-- New column for actions -->
                         </tr>
                     </thead>
                     <tbody>
@@ -117,22 +118,29 @@ mysqli_close($conn);
                             // Loop through each row of product data
                             while ($row = mysqli_fetch_assoc($resultProducts)) {
                                 echo "<tr>"; // Start a new table row
-                                echo "<td>" . htmlspecialchars($row['id_Produit']) . "</td>"; // Product ID
-                                echo "<td>" . htmlspecialchars($row['libelle_Produit']) . "</td>"; // Product Libelle
-                                echo "<td>" . htmlspecialchars($row['product_name']) . "</td>"; // Product Name
-                                echo "<td>" . htmlspecialchars($row['Description_Produit']) . "</td>"; // Product Description
-                                echo "<td>" . htmlspecialchars($row['prix_de_vente']) . "</td>"; // Product Price
+                                echo "<td data-label='ID'>" . htmlspecialchars($row['id_Produit']) . "</td>"; // Product ID
+                                echo "<td data-label='Libelle'>" . htmlspecialchars($row['libelle_Produit']) . "</td>"; // Product Libelle
+                                echo "<td data-label='Product Name'>" . htmlspecialchars($row['product_name']) . "</td>"; // Product Name
+                                echo "<td data-label='Description'>" . htmlspecialchars($row['Description_Produit']) . "</td>"; // Product Description
+                                echo "<td data-label='Price'>" . htmlspecialchars($row['prix_de_vente']) . "</td>"; // Product Price
                                 // Product Image, with a fixed width and auto height for display
-                                echo "<td><img src='../images/" . htmlspecialchars($row['image']) . "' alt='Product Image' style='width: 50px; height: auto;'></td>";
+                                echo "<td data-label='Image'><img src='../images/" . htmlspecialchars($row['image']) . "' alt='Product Image' style='width: 50px; height: auto;'></td>";
+                                echo "<td data-label='Actions' class='actions-cell'>"; // Actions column
+                                echo "<a href='edit_product.php?id=" . urlencode($row['id_Produit']) . "' class='action-btn edit-btn'><i class='fas fa-edit'></i> Edit</a>";
+                                echo "<a href='delete_product.php?id=" . urlencode($row['id_Produit']) . "' class='action-btn delete-btn' onclick='return confirm(\"Are you sure you want to delete this product?\");'><i class='fas fa-trash-alt'></i> Delete</a>";
+                                echo "</td>";
                                 echo "</tr>"; // End the table row
                             }
                         } else {
                             // If no products are found, display a message
-                            echo "<tr><td colspan='6'>No products found.</td></tr>";
+                            echo "<tr><td colspan='7'>No products found.</td></tr>"; // colspan changed to 7
                         }
                         ?>
                     </tbody>
                 </table>
+            </div>
+            <div class="add-button-container">
+                <a href="add_product.php" class="add-btn"><i class="fas fa-plus-circle"></i> Add New Product</a>
             </div>
         </main>
     </div>

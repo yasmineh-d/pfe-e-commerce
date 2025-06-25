@@ -35,6 +35,71 @@
     background-color: #f1f1f1;
 }
 
+/* Styles for action buttons within the table */
+.actions-cell {
+    text-align: center; /* Center the action buttons */
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.action-btn i {
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background-color: #007bff; /* Blue for edit */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Styles for the Add New User button */
+.add-button-container {
+    margin-top: 30px;
+    text-align: right; /* Align button to the right */
+    padding-right: 20px; /* Match table padding */
+}
+
+.add-btn {
+    background-color: #28a745; /* Green for add */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.add-btn i {
+    margin-right: 8px;
+}
+
 /* Responsive adjustments for the table */
 @media (max-width: 768px) {
     .users-table thead {
