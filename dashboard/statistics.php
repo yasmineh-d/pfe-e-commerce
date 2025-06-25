@@ -8,6 +8,7 @@ $password   = "";
 $dbname     = "efm";
 
 // Initialize counts to 0 in case of errors or no data
+$totalClients = 0; // Added for total clients
 $totalOrders = 0;
 $totalProducts = 0;
 
@@ -22,6 +23,17 @@ if (!$conn) {
     // For this example, we'll let it show 0s if connection fails.
 } else {
     // --- Get Total Orders ---
+    // Get Total Clients
+    $sqlClients = "SELECT COUNT(*) as client_count FROM utilisateur"; // Assuming 'utilisateur' is the clients table
+    $resultClients = mysqli_query($conn, $sqlClients);
+
+    if ($resultClients) {
+        $rowClients = mysqli_fetch_assoc($resultClients);
+        $totalClients = $rowClients['client_count'];
+    } else {
+        error_log("Error fetching total clients: " . mysqli_error($conn));
+    }
+
     // Get Total Orders
     $sqlOrders = "SELECT COUNT(*) as order_count FROM commande"; // Assuming 'commande' is the orders table
     $resultOrders = mysqli_query($conn, $sqlOrders);
@@ -137,6 +149,14 @@ if (!$conn) {
             <h1 class="title">Dashboard</h1>
             <!-- Container for statistics cards -->
             <div class="stats-cards">
+                <!-- Card for Total Clients -->
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i> <!-- Clients icon -->
+                    </div>
+                    <p class="card-label">Total Of Clients</p>
+                    <p class="card-value"><?php echo $totalClients; ?></p>
+                </div>
                 <!-- Card for Total Orders -->
                 <div class="card">
                     <div class="card-icon">
