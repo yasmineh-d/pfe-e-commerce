@@ -1,392 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homelectronique</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/home.css" />
-  <style>
-    /* Added style for spacing between price and shopping icon in Ramadan Sale */
-    /* This empty style block can be removed if the styles are in home.css */
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Produit - Ventilador Mini</title>
+  <link rel="stylesheet" href="css/description.css">
+  <link rel="stylesheet" href="style.css"> {/* Assurez-vous que ce chemin est correct */}
+  <!-- For Font Awesome icons used in the new header and footer, you might need to add this line: -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-  <div class="container">
-    <header class="site-header">
-      <div class="top-bar">
-        <p>FREE SHIPPING FOR ORDERS OVER 40 €. FREE RETURNS OVER 60 DAYS.</p>
+  <!-- ========================
+         NEW HEADER
+    ======================== -->
+  <header class="site-header">
+    <div class="top-bar">
+      <p>FREE SHIPPING FOR ORDERS OVER 40 €. FREE RETURNS OVER 60 DAYS.</p>
+    </div>
+
+    <div class="main-header">
+      <div class="logo">
+        <a href="home.php">
+          <img src="images/logo_Y.png" alt="House Electronics Logo" /> {/* Make sure this image path is correct */}
+        </a>
       </div>
+      <div class="header-content">
+        <nav class="nav-menu">
+          <ul>
+            <li>
+              <a href="home.php">Home <i class="fas fa-angle-down"></i></a>
+            </li>
+            <li><a href="about.php">About</a></li>
+            <li>
+              <a href="categories.php">Categories <i class="fas fa-angle-down"></i></a>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-      <div class="main-header">
-        <div class="logo">
-          <a href="home.php">
-            <img src="images/logo_Y.png" alt="House Electronics Logo" />
+        <div class="header-actions">
+          <a href="#">
+            <div class="icon-circle"><i class="fas fa-search"></i></div>
           </a>
+          <a href="#">
+            <div class="icon-circle">
+              <i class="far fa-heart"></i>
+            </div>
+          </a>
+          <a href="#">
+            <div class="icon-circle">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+          </a>
+          <a href="sign_in.php" class="signin-btn">Sign-in</a>
         </div>
-        <div class="header-content">
-          <nav class="nav-menu">
-            <ul>
-              <li>
-                <a href="home.php">Home <i class="fas fa-angle-down"></i></a>
-              </li>
-              <li><a href="about.php">About</a></li>
-              <li>
-                <a href="categories.php">Categories <i class="fas fa-angle-down"></i></a>
-              </li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
+      </div>
+    </div>
+  </header>
 
-          <div class="header-actions">
-            <a href="#">
-              <div class="icon-circle"><i class="fas fa-search"></i></div>
-            </a>
-            <a href="#">
-              <div class="icon-circle">
-                <i class="far fa-heart"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="icon-circle">
-                <i class="fas fa-shopping-bag"></i>
-              </div>
-            </a>
-            <a href="sign_in.php" class="signin-btn">Sign-in</a>
-          </div>
-        </div>
+  <!-- ========================
+         PAGE CONTAINER
+    ======================== -->
+  <div class="page-container">
+    <!-- ========================
+             BREADCRUMB HEADER
+        ======================== -->
+    <header class="breadcrumb-header">
+      <h1>Categories</h1>
+      <div class="header-controls">
+        <svg class="dropdown-arrow" fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M7 10l5 5 5-5H7z" />
+        </svg>
+        <svg class="search-icon" fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+        </svg>
       </div>
     </header>
 
-    <!-- Hero Section Start (CORRECTED STRUCTURE) -->
-    <section class="hero-section-purifier">
-      <!-- The ::before pseudo-element on hero-section-purifier (in CSS) creates the dark transparent background overlay -->
+    <!-- ========================
+             PAGE SUBHEADING
+        ======================== -->
+    <p class="page-subheading">Find your saved items and prepare to place your order.</p>
 
-      <!-- Content Overlay: This will be centered by flexbox settings on hero-section-purifier -->
-      <div class="overlay">
-        <div class="titlepurifier">
-          <h1>Smart Air Purifier 4</h1>
+    <!-- ========================
+             MAIN CONTENT (PRODUCT)
+        ======================== -->
+    <div class="main-content">
+      <!-- ========================
+                 PRODUCT IMAGE SECTION
+            ======================== -->
+      <div class="product-image-section">
+        <img src="images/ventilator_mini1.png" alt="Main product image of a white mini fan with accessories" class="main-product-image">
+        <div class="thumbnail-container">
+          <img src="images/ventilator_mini2.png" alt="Thumbnail 1: Mini fan held in hand" class="thumbnail-image">
+          <img src="images/ventilator_mini3.png" alt="Thumbnail 2: Mini fan next to a smartphone" class="thumbnail-image">
+          <img src="images/ventilator_mini4.png" alt="Thumbnail 3: Instructions for the mini fan" class="thumbnail-image">
         </div>
-        <div class="content-block">
-          <p class="subtitle">Breathe clean, healthy air</p>
-          <p class="features">
-            Purifies a large 20m² room in just 10 minutes<br />
-            Smart controls | OLED display
-          </p>
-          <div class="linkshop">
-            <a href="categories.php" class="shop-button">Shop Now</a>
+      </div>
+
+      <!-- ========================
+                 PRODUCT DETAILS SECTION
+            ======================== -->
+      <div class="product-details-section">
+        <h1 class="product-title">Ventilador_Mini</h1>
+        <div class="description-label">Description</div>
+        <p class="description-text">This is a portable mini handheld fan, designed for personal cooling. It features a compact, lightweight design with a circular blade guard for safety. The fan is USB rechargeable, making it convenient for travel, office, or outdoor use. Included accessories are a USB charging cable and a wrist strap for easy carrying</p>
+
+        <div class="price-section">
+          <span class="original-price">MAD 900.00</span>
+          <span class="current-price">7834,94 DH</span>
+        </div>
+
+        <button class="buy-button">Buy</button>
+      </div>
+    </div>
+
+    <!-- ========================
+             REVIEWS SECTION
+        ======================== -->
+    <div class="reviews-section">
+      <h2 class="reviews-title">Commentaires des clients</h2>
+
+      <div class="rating-summary">
+        <span class="rating-score">4.95</span>
+        <div class="star-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+      </div>
+
+      <div class="rating-details">
+        <div class="rating-item">
+          <span class="rating-category">Polyvalence</span>
+          <span class="rating-value">5.00</span>
+        </div>
+        <div class="rating-item">
+          <span class="rating-category">Qualité</span>
+          <span class="rating-value">5.00</span>
+        </div>
+        <div class="rating-item">
+          <span class="rating-category">Ajustement</span>
+          <span class="rating-value">5.00</span>
+        </div>
+      </div>
+
+      <div class="local-reviews">
+        <div class="local-reviews-left">
+          <span>Voir les avis locaux <strong>4.95</strong></span>
+          <div class="star-rating">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
         </div>
+        <label class="toggle-switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
       </div>
 
-      <!-- Navigation Arrows: Absolutely positioned relative to hero-section-purifier -->
-      <div class="nav-arrow left-arrow">
-        < <!-- You can use text, or an icon like <i class="fas fa-chevron-left"></i> -->
-      </div>
-      <div class="nav-arrow right-arrow">
-        > <!-- You can use text, or an icon like <i class="fas fa-chevron-right"></i> -->
-      </div>
-    </section>
-    <!-- Hero Section End -->
+      <button class="review-button">Review</button>
 
-    <section class="featured-categories">
-      <div class="container">
-        <h2 class="section-title">Featured Categories</h2>
-        <div class="categories-grid">
-          <a href="categories.php" class="category-item">
-            <div class="category-image-wrapper">
-              <img
-                src="images/Small Appliances.jpeg"
-                alt="Small Appliances"
-                class="category-image" />
-            </div>
-            <p class="category-name">Small Appliances</p>
-          </a>
+      <h3 class="all-reviews-title">Tous les commentaires</h3>
 
-          <a href="categories.php" class="category-item">
-            <div class="category-image-wrapper">
-              <img
-                src="images/Kitchen_Appliances
-.png"
-                alt="Kitchen Appliances"
-                class="category-image" />
-            </div>
-            <p class="category-name">Kitchen Appliances</p>
-          </a>
-
-          <a href="categories.php" class="category-item">
-            <div class="category-image-wrapper">
-              <img
-                src="images/laundry_Appliances.png"
-                alt="Laundry Appliances"
-                class="category-image" />
-            </div>
-            <p class="category-name">Laundry Appliances</p>
-          </a>
-
-          <a href="categories.php" class="category-item">
-            <div class="category-image-wrapper">
-              <img
-                src="images/Heating_&_Air Conditioning.png"
-                alt="Heating & Air Conditioning"
-                class="category-image" />
-            </div>
-            <p class="category-name">Heating & Air Conditioning</p>
-          </a>
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">M***e</span>
+          <span class="review-date">19 Dec,2024</span>
         </div>
-      </div>
-    </section>
-
-    <!-- Ramadan Sale Section Start (Corrected structure - removed nested section) -->
-    <section class="ramadan-sale">
-      <div class="ramadan-sale-page-container">
-        <!-- For overall centering -->
-        <h2 class="ramadan-sale-title">
-          Ramadan Sale – Up to 50% Off <span class="moon-icon">🌙</span>
-        </h2>
-        <div class="product-carousel-wrapper">
-          <button
-            class="carousel-arrow prev-arrow"
-            aria-label="Previous Product">
-            <
-              </button>
-              <div class="product-carousel">
-                <!-- Product Card 1: Vacuum Cleaner -->
-                <div class="product-card">
-                  <a href="categories.php" class="product-image-link">
-                    <div class="product-image-container">
-                      <img
-                        src="images/Vacuum_cleaners.png"
-                        alt="Vacuum Cleaner NEXO" />
-                    </div>
-                  </a>
-                  <h3 class="product-name">Vacuum_cleaners</h3>
-                  <div class="price-and-cart-container">
-                    <p class="product-price-sale">MAD 900.00<a href="categories.html" class="best-picks-add-icon" aria-label="Add Vacuum_cleaners to cart">
-                        <i class="fas fa-shopping-bag"></i>
-                      </a></p>
-                  </div>
-                  <p class="product-price-original">MAD 1,190.00</p>
-                  <div class="product-rating">
-                    <span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span>
-                  </div>
-                  <p class="product-status">Selling Fast</p>
-                </div>
-
-                <!-- Product Card 2: Toaster -->
-                <div class="product-card">
-                  <a href="categories.php" class="product-image-link">
-                    <div class="product-image-container">
-                      <img src="images/Toaster.png" alt="Toaster" />
-                    </div>
-                  </a>
-                  <h3 class="product-name">Toaster</h3>
-                  <div class="price-and-cart-container">
-                    <p class="product-price-sale">MAD 700.00 <a href="categories.html" class="best-picks-add-icon" aria-label="Add Toaster to cart">
-                        <i class="fas fa-shopping-bag"></i>
-                      </a></p>
-                  </div>
-                  <p class="product-price-original">MAD 800.00</p>
-                  <div class="product-rating">
-                    <span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span>
-                  </div>
-                  <p class="product-status">Selling Fast</p>
-                </div>
-
-                <!-- Product Card 3: Vacum -->
-                <div class="product-card">
-                  <a href="categories.php" class="product-image-link">
-                    <div class="product-image-container">
-                      <img src="images/vacum.png" alt="Vacum" />
-                    </div>
-                  </a>
-                  <h3 class="product-name">Vacum</h3>
-                  <div class="price-and-cart-container">
-                    <p class="product-price-sale">MAD 1,380.00 <a href="categories.html" class="best-picks-add-icon" aria-label="Add Vacum to cart">
-                        <i class="fas fa-shopping-bag"></i>
-                      </a></p>
-                  </div>
-                  <p class="product-price-original">MAD 1500.00</p>
-                  <div class="product-rating">
-                    <span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span>
-                  </div>
-                  <p class="product-status">Selling Fast</p>
-                </div>
-
-                <!-- Product Card 4: Vapeurcro (Iron) -->
-                <div class="product-card">
-                  <a href="categories.php" class="product-image-link">
-                    <div class="product-image-container">
-                      <img src="images/vapeurcro.png" alt="Vapeurcro Iron" />
-                    </div>
-                  </a>
-                  <h3 class="product-name">Vapeurcro</h3>
-                  <div class="price-and-cart-container">
-                    <p class="product-price-sale">MAD 500.00<a href="categories.html" class="best-picks-add-icon" aria-label="Add Vapeurcro to cart">
-                        <i class="fas fa-shopping-bag"></i>
-                      </a></p>
-                  </div>
-                  <p class="product-price-original">MAD 600.00</p>
-                  <div class="product-rating">
-                    <span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span><span class="star-icon">⭐</span>
-                  </div>
-                  <p class="product-status">Selling Fast</p>
-                </div>
-
-                <!-- Add more product cards here if needed -->
-              </div>
-              <button class="carousel-arrow next-arrow" aria-label="Next Product">
-                >
-              </button>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
+        <p class="review-text">3 Speeds, rather correct for its size, perfect in the bag.</p>
       </div>
-    </section>
-    <!-- Ramadan Sale Section End -->
 
-    <!-- NEW SECTION: Best Picks -->
-    <section class="best-picks-section">
-      <div class="ramadan-sale-page-container"> <!-- Note: class name might be too specific if this is a general container style -->
-        <h2 class="best-picks-title">House-electronic's Best Picks</h2>
-        <div class="product-carousel-wrapper">
-          <button
-            class="carousel-arrow prev-arrow best-picks-arrow"
-            aria-label="Previous Product">
-            <
-              </button>
-              <div class="product-carousel">
-                <!-- Card 1: Thermomix -->
-                <div class="best-picks-card">
-                  <div class="best-picks-img-container">
-                    <a href="categories.php"> <img src="images/Thermomix TM6.png" alt="Thermomix TM6" /></a>
-                  </div>
-                  <h3 class="best-picks-name">Thermomix TM6</h3>
-                  <div class="best-picks-footer">
-                    <span class="best-picks-price">MAD 11,380.00</span>
-                    <a href="categories.php" class="best-picks-add-icon"><i class="fas fa-shopping-bag"></i></a>
-                  </div>
-                </div>
-
-                <!-- Card 2: Stand Mixer -->
-                <div class="best-picks-card">
-                  <div class="best-picks-img-container">
-                    <a href="categories.php"> <img src="images/Stand Mixer.png" alt="Stand Mixer" /></a>
-                  </div>
-                  <h3 class="best-picks-name">Stand Mixer</h3>
-                  <div class="best-picks-footer">
-                    <span class="best-picks-price">MAD 500.00</span>
-                    <a href="categories.html" class="best-picks-add-icon"><i class="fas fa-shopping-bag"></i></a>
-                  </div>
-                </div>
-
-                <!-- Card 3: Hair Dryer -->
-                <div class="best-picks-card">
-                  <div class="best-picks-img-container">
-                    <a href="categories.php"> <img src="images/Hair Dryer.png" alt="Hair Dryer" /></a> <!-- Corrected potential unicode char in filename -->
-                  </div>
-                  <h3 class="best-picks-name">Hair Dryer</h3>
-                  <div class="best-picks-footer">
-                    <span class="best-picks-price">MAD 7,000.00</span>
-                    <a href="categories.html" class="best-picks-add-icon"><i class="fas fa-shopping-bag"></i></a>
-                  </div>
-                </div>
-
-                <!-- Card 4: Electric Kettle -->
-                <div class="best-picks-card">
-                  <div class="best-picks-img-container">
-                    <a href="categories.php"> <img src="images/Electric Kettle.png" alt="Electric Kettle" /></a>
-                  </div>
-                  <h3 class="best-picks-name">Electric Kettle</h3>
-                  <div class="best-picks-footer">
-                    <span class="best-picks-price">MAD 380.00</span>
-                    <a href="home.html" class="best-picks-add-icon"><i class="fas fa-shopping-bag"></i></a>
-                  </div>
-                </div>
-              </div>
-              <button
-                class="carousel-arrow next-arrow best-picks-arrow"
-                aria-label="Next Product">
-                >
-              </button>
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">c***a</span>
+          <span class="review-date">20 Dec,2024</span>
         </div>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">I love it too it makes well of the wind and is rechargeable with cable</p>
       </div>
-    </section>
-    <!-- End of New Section -->
 
-    <!-- Testimonials Section Start -->
-    <section class="testimonials-section">
-      <h2 class="testimonials-main-title">
-        Get discounts, services, and<br />tailored tools for your business
-        stage.
-      </h2>
-      <div class="testimonials-wrapper">
-        <button class="testimonial-arrow left-testimonial-arrow">
-          << </button> <!-- Corrected arrow content -->
-
-            <!-- Testimonial Card 1 -->
-            <div class="testimonial-card">
-              <div class="testimonial-top">
-                <img
-                  src="images/photo_girl.jpg"
-                  alt="Emily Russell"
-                  class="testimonial-avatar" />
-                <div class="testimonial-author-info">
-                  <p class="testimonial-author-name">Emily Russell</p>
-                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <div class="testimonial-quote-icon">”</div>
-              </div>
-              <p class="testimonial-quote-text">
-                “ The electronic appliances I purchased are of excellent quality.
-                They're durable, efficient, and exactly as described on the
-                website. I'll definitely shop here again! ”
-              </p>
-            </div>
-
-            <!-- Testimonial Card 2 -->
-            <div class="testimonial-card">
-              <div class="testimonial-top">
-                <img
-                  src="images/photo boy.jpg"
-                  alt="Mark Taylor"
-                  class="testimonial-avatar" />
-                <div class="testimonial-author-info">
-                  <p class="testimonial-author-name">Mark Taylor</p>
-                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                </div>
-                <div class="testimonial-quote-icon">”</div>
-              </div>
-              <p class="testimonial-quote-text">
-                “ A one-stop shop for home essentials. The prices are great, and
-                the customer service is top-notch! ”
-              </p>
-            </div>
-
-            <button class="testimonial-arrow right-testimonial-arrow">>></button> <!-- Corrected arrow content -->
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">a***6</span>
+          <span class="review-date">16 Dec,2024</span>
+        </div>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Really very useful and looks good quality</p>
       </div>
-    </section>
-    <!-- Testimonials Section End -->
-    <!-- Membership Promo Section Start -->
-    <section class="membership-promo-section">
-      <div class="promo-content">
-        <p class="promo-text">
-          Become a member – enjoy 10% off<br />
-          Sign up for free
-        </p>
-        <a href="sign_up.php" class="promo-signup-btn">Sign Up</a>
-      </div>
-      <div class="promo-image">
-        <img
-          src="images/photo2.png"
-          alt="Kitchen Appliances Collection" />
-      </div>
-    </section>
-    <!-- Membership Promo Section End -->
+    </div>
+    <!-- End Page Container Div -->
   </div>
-  <!-- Footer Section Start -->
+
+  <!-- ========================
+         NEW FOOTER
+    ======================== -->
   <footer id="contact" class="site-footer">
     <div class="footer-container">
       <div class="footer-main">
@@ -440,8 +254,8 @@
         <div class="footer-column">
           <h4>Contact</h4>
           <div class="contact-icons">
-            <a href="#"><img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" /></a>
-            <a href="#"><img src="images/gmail-svgrepo-com.svg" alt="Gmail" /></a>
+            <a href="#"><img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" /></a> {/* Ensure path is correct */}
+            <a href="#"><img src="images/gmail-svgrepo-com.svg" alt="Gmail" /></a> {/* Ensure path is correct */}
           </div>
         </div>
 
@@ -471,7 +285,6 @@
       </div>
     </div>
   </footer>
-  <!-- Footer Section End -->
 </body>
 
 </html>

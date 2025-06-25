@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = intval($_POST['product_id']);
     if ($_POST['action'] === 'increment') {
       $_SESSION['cart'][$productId]['quantity'] += 1;
-    } elseif ($_POST['action'] === 'decrement' && $_SESSION['cart'][$productId]['quantity'] > 1) {
+    } elseif ($_POST['action'] === 'decrement' && $_SESSION['cart'][$productId]['quantity'] > 0) {
       $_SESSION['cart'][$productId]['quantity'] -= 1;
     }
     header("Location: " . $_SERVER['PHP_SELF']);
@@ -58,6 +58,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['shipping_method'] = ($_POST['shipping_method'] === 'fast') ? 'fast' : 'standard';
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
+  }
+}
+
+// Remove items with quantity 0 or less from cart
+if (!empty($_SESSION['cart'])) {
+  foreach ($_SESSION['cart'] as $id => $item) {
+    if ($item['quantity'] <= 0) {
+      unset($_SESSION['cart'][$id]);
+    }
   }
 }
 
@@ -206,7 +215,7 @@ $shippingCost = $shippingMethod === 'fast' ? 100 : 50;
               <form method="post">
                 <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
                 <input type="hidden" name="action" value="decrement">
-                <button type="submit" <?= $row['quantite'] <= 1 ? 'disabled' : '' ?>>-</button>
+                <button type="submit" <?= $row['quantite'] <= 0 ? 'disabled' : '' ?>>-</button>
               </form>
 
               <!-- Quantity Display -->

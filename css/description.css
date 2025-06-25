@@ -1,0 +1,787 @@
+/* --- Global Reset and Base Styles (From Product Page CSS) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Modern system font stack */
+  background-color: #f5f5f5; /* Light grey background for the page */
+  color: #333; /* Default text color */
+}
+
+/* --- OLD Top Promotional Banner & Main Header Styles (REMOVED/COMMENTED OUT - From Product Page CSS) --- */
+/*
+.promo-banner { ... }
+.main-header { ... }
+.logo-section { ... }
+.logo-icon { ... }
+.logo-text { ... }
+.main-nav { ... }
+.nav-item { ... }
+.nav-item:hover { ... }
+.header-actions { ... }
+.header-icon { ... }
+.header-icon:hover { ... }
+.sign-in-btn { ... }
+.sign-in-btn:hover { ... }
+*/
+
+/* --- Page Container (From Product Page CSS) --- */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  min-height: calc(
+    100vh - 120px
+  ); /* Adjust based on actual header/footer heights */
+}
+
+/* --- Breadcrumb Header (From Product Page CSS) --- */
+.breadcrumb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dropdown-arrow,
+.search-icon {
+  width: 20px;
+  height: 20px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* --- Page Subheading (From Product Page CSS) --- */
+.page-subheading {
+  padding: 15px 20px;
+  font-size: 14px;
+  color: #666;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* --- Main Content Area (From Product Page CSS) --- */
+.main-content {
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- Product Image Section (From Product Page CSS) --- */
+.product-image-section {
+  flex: 1;
+  max-width: 400px;
+}
+
+.main-product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.thumbnail-image:hover {
+  border-color: #4285f4;
+}
+
+/* --- Product Details Section (From Product Page CSS) --- */
+.product-details-section {
+  flex: 1;
+  max-width: 500px;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.description-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.description-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* --- Price Section (From Product Page CSS) --- */
+.price-section {
+  margin-bottom: 20px;
+}
+
+.original-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.current-price {
+  color: #e74c3c;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* --- Buy Button (From Product Page CSS) --- */
+.buy-button {
+  background: linear-gradient(135deg, #4285f4, #5a67d8);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.buy-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+}
+
+/* --- Reviews Section (From Product Page CSS) --- */
+.reviews-section {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 20px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.reviews-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.rating-score {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4285f4;
+}
+
+.star-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: #ffc107;
+  font-size: 18px;
+}
+
+.rating-details {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.rating-item {
+  text-align: center;
+}
+
+.rating-category {
+  display: block;
+  color: #666;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.rating-value {
+  font-weight: 700;
+  color: #333;
+}
+
+.local-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 14px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.local-reviews-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- Toggle Switch Styling (From Product Page CSS) --- */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4285f4; /* Checked state color */
+  transition: 0.4s;
+  border-radius: 22px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* --- Review Button (From Product Page CSS) --- */
+.review-button {
+  background: linear-gradient(135deg, #4285f4, #5a67d8);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+
+.all-reviews-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* --- Individual Review Card (From Product Page CSS) --- */
+.review-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-left: 4px solid #4285f4;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.review-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+  margin-top: 8px;
+}
+
+.review-stars {
+  /* This class exists in HTML for reviews */
+  margin: 6px 0;
+}
+
+/* --- OLD Footer Styles (REMOVED/COMMENTED OUT - From Product Page CSS) --- */
+/*
+.footer { ... }
+.footer-content { ... }
+.footer-section h3 { ... }
+.footer-section a { ... }
+.footer-section a:hover { ... }
+.footer-bottom { ... }
+*/
+
+/* --- Media Queries for Responsiveness (from Product Page CSS - Content Part) --- */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .product-details-section,
+  .product-image-section {
+    max-width: none;
+  }
+
+  .rating-details {
+    gap: 15px;
+  }
+}
+
+/* ========================================================================== */
+/* == NEW HEADER AND FOOTER CSS (From your first CSS block) STARTS HERE == */
+/* ========================================================================== */
+
+/* ========================
+   TOP BAR (Blue strip)
+======================== */
+.top-bar {
+  background-color: #3771c8;
+  color: #fcd34d;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px 0;
+}
+
+/* ========================
+   MAIN HEADER AREA
+======================== */
+.main-header {
+  background-color: #3771c8;
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start; /* Changed from center to flex-start for logo alignment */
+  gap: 1px; /* Reduced gap for closer alignment if needed */
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+.header-content {
+  background-color: #ffffff;
+  border-radius: 30px 0px 0px 0px;
+  padding: 12px 30px; /* Reduced vertical padding slightly */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 20px; /* Space between logo and content area */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+/* ========================
+   LOGO
+======================== */
+.logo img {
+  max-height: 57px; /* Original height */
+  margin-left: 9px; /* Spacing from the edge */
+  margin-top: -15px; /* Adjust to align with the white header content visually */
+  position: relative; /* Allows z-index if ever needed over other elements */
+}
+
+/* ========================
+   NAVIGATION
+======================== */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 115px; /* Adjust gap as needed for your desired spacing */
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 13px; /* Space between text and icon */
+  position: relative; /* For the active indicator */
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+  color: #1e90ff; /* Example hover/active color */
+}
+
+/* Optional: Active link indicator */
+.nav-menu ul li a.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #000; /* Color of the underline */
+  position: absolute;
+  bottom: -5px; /* Position below the text */
+  left: 0;
+}
+
+/* ========================
+   ICON BUTTONS (Search, Heart, Bag)
+======================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 45px; /* Spacing between icons and sign-in button */
+}
+
+.icon-circle {
+  background-color: #f1f3f6; /* Light grey background for icons */
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.icon-circle i {
+  font-size: 1rem; /* Adjust icon size if needed */
+  color: #000;
+}
+
+.icon-circle:hover {
+  background-color: #e0e7ff; /* Slightly darker on hover */
+}
+
+/* ========================
+   SIGN-IN BUTTON
+======================== */
+.signin-btn {
+  padding: 6px 16px;
+  border: 1px solid #3771c8;
+  color: #3771c8;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: #ffdd55; /* Yellow accent on hover */
+  color: #3771c8; /* Keep text color or change as desired */
+}
+
+/* ========================
+   RESPONSIVE DESIGN (HEADER)
+======================== */
+@media (max-width: 992px) {
+  /* Adjust breakpoint as needed */
+  .nav-menu ul {
+    gap: 40px; /* Reduce gap for medium screens */
+  }
+  .header-actions {
+    gap: 20px; /* Reduce gap for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start; /* Align logo to the start */
+  }
+
+  .logo img {
+    margin-top: 5px; /* Reset top margin for stacked layout */
+    margin-bottom: 10px; /* Add some space below logo */
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start; /* Align nav and actions to the start */
+    gap: 15px;
+    padding: 20px;
+    border-radius: 30px; /* Or adjust to fit the new layout */
+    margin-left: 0; /* Remove margin when stacked */
+    width: 100%; /* Make header content take full width */
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 10px; /* Adjust gap for vertical nav */
+    width: 100%; /* Make nav take full width */
+  }
+  .nav-menu ul li a {
+    justify-content: flex-start; /* Align nav items text to left */
+  }
+
+  .header-actions {
+    /* flex-direction: row; Already row by default */
+    justify-content: flex-start; /* Align actions to the start */
+    width: 100%;
+    gap: 10px; /* Adjust gap for smaller screens */
+    flex-wrap: wrap; /* Allow actions to wrap if they don't fit */
+  }
+}
+
+/* ========================
+   SITE FOOTER SECTION
+======================== */
+.site-footer {
+  background-color: #3771c8; /* Main blue from header */
+  color: #ffffff;
+  padding: 60px 0 20px 0;
+  font-family: Arial, sans-serif; /* Footer specific font */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px; /* Prevent columns from getting too narrow */
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a,
+.footer-legal-links a {
+  color: #d1d5db; /* A slightly off-white for links */
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover,
+.footer-legal-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Styles for stacking contact icon links (WhatsApp, Gmail) */
+.footer-column .contact-icons a {
+  display: block; /* Makes each link take full width and stack vertically */
+  margin-bottom: 10px; /* Space between the links */
+}
+.footer-column .contact-icons a:last-child {
+  margin-bottom: 0; /* Remove margin from the last icon if only two */
+}
+
+.contact-icons img {
+  width: 36px;
+  height: auto;
+  display: block; /* Ensures the image behaves as a block within its 'a' tag */
+  transition: transform 0.2s ease; /* For smooth scaling on hover */
+}
+
+.footer-column .contact-icons a:hover img {
+  transform: scale(1.15); /* Make icon bigger on hover */
+}
+
+/* Social icons */
+.social-icons .social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  margin-right: 8px; /* Space between horizontal icons */
+  margin-bottom: 8px; /* Space for wrapping */
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.social-icons .social-icon:hover {
+  transform: scale(1.1);
+}
+
+.facebook-bg {
+  background-color: #1877f2;
+}
+.twitter-bg {
+  background-color: #1da1f2;
+}
+.linkedin-bg {
+  background-color: #0a66c2;
+}
+.instagram-bg {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 0 20px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: #d1d5db;
+}
+
+.footer-legal-links span {
+  margin: 0 10px;
+}
+
+/* Responsive adjustments for Footer */
+@media (max-width: 992px) {
+  .footer-column {
+    flex-basis: calc(33.333% - 20px); /* Adjust for 3 columns with gap */
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    gap: 20px; /* Reduce gap between columns */
+  }
+  .footer-column {
+    flex-basis: calc(50% - 10px); /* Adjust for 2 columns with gap */
+    min-width: 150px;
+  }
+  .footer-column h4 {
+    font-size: 0.95rem; /* Slightly smaller heading */
+  }
+  .footer-bottom {
+    flex-direction: column; /* Stack bottom items */
+    text-align: center;
+    gap: 10px;
+  }
+  .footer-legal-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-main {
+    flex-direction: column; /* Stack all columns */
+    align-items: flex-start; /* Align columns to the start */
+    gap: 30px;
+  }
+  .footer-column {
+    flex-basis: 100%; /* Each column takes full width */
+    min-width: unset;
+  }
+  .footer-column h4 {
+    margin-bottom: 15px;
+  }
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+  /* For contact and social icons on smallest screens, ensure they are visible and spaced */
+  .footer-column .contact-icons,
+  .footer-column .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .footer-column .contact-icons a,
+  .footer-column .social-icons .social-icon {
+    margin-bottom: 0; /* Reset bottom margin since gap handles spacing */
+    margin-right: 0; /* Reset right margin if it was set for horizontal layout */
+  }
+  .footer-column .social-icons .social-icon {
+    /* Ensure individual social icons still get horizontal spacing if they wrap in a line */
+    margin-right: 8px;
+  }
+  .footer-column .social-icons .social-icon:last-child {
+    margin-right: 0;
+  }
+}
