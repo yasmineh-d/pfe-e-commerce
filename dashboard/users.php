@@ -13,8 +13,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Fetch user data
-$sqlUsers = "SELECT email, nom, telephone, password FROM utilisateur";
+// Fetch user data from the 'client' table
+$sqlUsers = "SELECT nom, email, telephone, password FROM client";
 $resultUsers = mysqli_query($conn, $sqlUsers);
 
 // Close connection
@@ -27,47 +27,11 @@ mysqli_close($conn);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Users Dashboard</title>
-    <link rel="stylesheet" href="../css/statistics.css"> <!-- Reusing statistics.css for sidebar styling -->
+    <link rel="stylesheet" href="../css/statistics.css"> <!-- For general dashboard layout and sidebar -->
+    <link rel="stylesheet" href="../css/users.css"> <!-- For specific user table styling -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <style>
-        /* Specific styles for the users table */
-        .users-table-container {
-            background-color: var(--content-bg);
-            padding: 20px;
-            border-radius: var(--card-border-radius);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            overflow-x: auto; /* Ensures table is scrollable on small screens */
-        }
 
-        .users-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .users-table th,
-        .users-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            font-size: 14px;
-        }
-
-        .users-table th {
-            background-color: #f2f2f2;
-            font-weight: 600;
-            color: var(--title-text);
-        }
-
-        .users-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .users-table tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 
 <body>
@@ -122,8 +86,8 @@ mysqli_close($conn);
                 <table class="users-table">
                     <thead>
                         <tr>
+                            <th>Name</th>
                             <th>Email</th>
-                            <th>Nom</th>
                             <th>Telephone</th>
                             <th>Password</th>
                         </tr>
@@ -133,10 +97,10 @@ mysqli_close($conn);
                         if (mysqli_num_rows($resultUsers) > 0) {
                             while ($row = mysqli_fetch_assoc($resultUsers)) {
                                 echo "<tr>";
-                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['nom']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['telephone']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['password']) . "</td>";
+                                echo "<td data-label='Name'>" . htmlspecialchars($row['nom']) . "</td>";
+                                echo "<td data-label='Email'>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td data-label='Telephone'>" . htmlspecialchars($row['telephone']) . "</td>";
+                                echo "<td data-label='Password'>" . htmlspecialchars($row['password']) . "</td>";
                                 echo "</tr>";
                             }
                         } else {

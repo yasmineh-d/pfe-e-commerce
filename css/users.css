@@ -1,0 +1,73 @@
+/* General styles for the users table to match dashboard theme */
+.users-table-container {
+    background-color: var(--content-bg);
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.users-table th,
+.users-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.users-table th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: var(--title-text);
+}
+
+.users-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.users-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive adjustments for the table */
+@media (max-width: 768px) {
+    .users-table thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    .users-table, .users-table tbody, .users-table tr, .users-table td {
+        display: block; /* Make table elements behave like blocks */
+        width: 100%;
+    }
+
+    .users-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: var(--card-border-radius);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .users-table td {
+        text-align: right;
+        padding-left: 50%; /* Make space for the pseudo-element label */
+        position: relative;
+    }
+
+    .users-table td::before {
+        content: attr(data-label); /* Use data-label for the pseudo-element */
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--title-text);
+    }
+}

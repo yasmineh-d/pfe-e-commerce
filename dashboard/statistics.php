@@ -102,13 +102,13 @@ if (!$conn) {
                 <!-- Main navigation links -->
                 <ul class="nav-links">
                     <li class="active"> <!-- Active navigation item -->
-                        <a href="#">
+                        <a href="../dashboard/statistics.php">
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Statistique</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../dashboard/user.php">
+                        <a href="../dashboard/users.php">
                             <i class="fas fa-users"></i>
                             <span>Users</span>
                         </a>
