@@ -26,6 +26,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
   }
 
+  // Handle adding product from description.php
+  if (isset($_POST['product_name'], $_POST['product_price'], $_POST['product_image'])) {
+    $productName = $_POST['product_name'];
+    $productPrice = floatval($_POST['product_price']);
+    $productImage = $_POST['product_image'];
+
+    // For demonstration, using a fixed ID. In a real app, this would come from a database.
+    // Or, you could generate a hash of the product name for a unique ID if no database ID is available.
+    $productId = 1; // Assuming 'Ventilador_Mini' has an ID of 1 for this example
+
+    if (!isset($_SESSION['cart'])) {
+      $_SESSION['cart'] = [];
+    }
+
+    if (isset($_SESSION['cart'][$productId])) {
+      $_SESSION['cart'][$productId]['quantity'] += 1;
+    } else {
+      $_SESSION['cart'][$productId] = [
+        'libelle_Produit' => $productName,
+        'prix' => $productPrice,
+        'image' => $productImage,
+        'quantity' => 1
+      ];
+    }
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+  }
+
   // Handle promo code submission
   if (isset($_POST['apply_promo'])) {
     $enteredCode = strtoupper(trim($_POST['promo_code'] ?? ''));
@@ -173,7 +201,7 @@ $shippingCost = $shippingMethod === 'fast' ? 100 : 50;
               <i class="far fa-heart"></i>
             </div>
           </a>
-          <a href="#">
+          <a href="shopping_cart.php">
             <div class="icon-circle">
               <i class="fas fa-shopping-bag"></i>
             </div>

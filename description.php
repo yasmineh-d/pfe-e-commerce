@@ -24,7 +24,7 @@
 
         <div class="main-header">
             <div class="logo">
-                <a href="index.html">
+                <a href="home.php">
                     <img src="images/logo_Y.png" alt="House Electronics Logo" />
                 </a>
             </div>
@@ -150,8 +150,12 @@
                     <span class="original-price">MAD 900.00</span>
                     <span class="current-price">7834,94 DH</span>
                 </div>
-
-                <button class="buy-button">Buy</button>
+                <form action="shopping_cart.php" method="post" class="buy-form">
+                    <input type="hidden" name="product_name" value="Ventilador_Mini">
+                    <input type="hidden" name="product_price" value="7834.94">
+                    <input type="hidden" name="product_image" value="images/Ventilador_Mini.png">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
             </div>
         </div>
 
