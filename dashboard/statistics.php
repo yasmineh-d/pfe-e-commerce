@@ -1,3 +1,58 @@
+<?php
+// --- START PHP ---
+
+// Database connection parameters (REPLACE WITH YOUR ACTUAL CREDENTIALS)
+$servername = "localhost";
+$username   = "root";
+$password   = "";
+$dbname     = "efm";
+
+// Initialize counts to 0 in case of errors or no data
+$totalOrders = 0;
+$totalProducts = 0;
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    // For debugging, you might want to see the error:
+    // die("Connection failed: " . mysqli_connect_error());
+    // For production, you might just log it and show 0s or a generic error message
+    // For this example, we'll let it show 0s if connection fails.
+} else {
+    // --- Get Total Orders ---
+    // Get Total Orders
+    $sqlOrders = "SELECT COUNT(*) as order_count FROM commande"; // Assuming 'commande' is the orders table
+    $resultOrders = mysqli_query($conn, $sqlOrders);
+
+    if ($resultOrders) {
+        $rowOrders = mysqli_fetch_assoc($resultOrders);
+        $totalOrders = $rowOrders['order_count'];
+    } else {
+        // Optional: Log error if query fails
+        // error_log("Error fetching total orders: " . mysqli_error($conn));
+    }
+
+    // --- Get Total Products ---
+    // Get Total Products
+    $sqlProducts = "SELECT COUNT(*) as product_count FROM produit"; // Assuming 'produit' is the products table
+    $resultProducts = mysqli_query($conn, $sqlProducts);
+
+    if ($resultProducts) {
+        $rowProducts = mysqli_fetch_assoc($resultProducts);
+        $totalProducts = $rowProducts['product_count'];
+    } else {
+        // Optional: Log error if query fails
+        // error_log("Error fetching total products: " . mysqli_error($conn));
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+}
+
+// --- END PHP ---
+?>
 <!DOCTYPE html> <!-- Specifies the document type to be HTML5 -->
 <html lang="en"> <!-- Root element of an HTML page, language set to English -->
 
@@ -30,28 +85,25 @@
             <div class="sidebar-top">
                 <!-- Logo section -->
                 <div class="logo">
-                    <!-- <img src="../images/logo_Y.png" alt="logo"> REMOVED IMAGE -->
                     <img src="../images/logo_Y.png" alt="logo">
                 </div>
                 <!-- Main navigation links -->
                 <ul class="nav-links">
                     <li class="active"> <!-- Active navigation item -->
                         <a href="#">
-                            <!-- Icon for Dashboard/Statistique changed to tachometer-alt -->
                             <i class="fas fa-tachometer-alt"></i>
                             <span>Statistique</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../dashboard/users.php">
-                            <!-- Icon for Users (kept as is, it's standard) -->
+                        <a href="../dashboard/user.php">
                             <i class="fas fa-users"></i>
                             <span>Users</span>
                         </a>
                     </li>
                     <li>
                         <a href="../dashboard/product.php">
-                            <i class="fas fa-box-open"></i> <!-- Product icon (kept as is) -->
+                            <i class="fas fa-box-open"></i>
                             <span>Product</span>
                         </a>
                     </li>
@@ -63,14 +115,12 @@
                 <ul class="nav-links">
                     <li>
                         <a href="../dashboard/settings.php">
-                            <!-- Icon for Settings (kept as is, it's standard) -->
                             <i class="fas fa-cog"></i>
                             <span>Settings</span>
                         </a>
                     </li>
                     <li>
                         <a href="../dashboard/logout.php">
-                            <!-- Icon for Log out (kept as is, it's standard) -->
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Log out</span>
                         </a>
@@ -87,14 +137,13 @@
             <h1 class="title">Dashboard</h1>
             <!-- Container for statistics cards -->
             <div class="stats-cards">
-
                 <!-- Card for Total Orders -->
                 <div class="card">
                     <div class="card-icon">
                         <i class="fas fa-file-alt"></i> <!-- Orders icon -->
                     </div>
                     <p class="card-label">Total Of Orders</p>
-                    <p class="card-value">530</p>
+                    <p class="card-value"><?php echo $totalOrders; ?></p>
                 </div>
                 <!-- Card for Total Product -->
                 <div class="card">
@@ -102,7 +151,7 @@
                         <i class="fas fa-archive"></i> <!-- Product/Archive icon -->
                     </div>
                     <p class="card-label">Total Of Product</p>
-                    <p class="card-value">20</p>
+                    <p class="card-value"><?php echo $totalProducts; ?></p>
                 </div>
             </div>
         </main>
