@@ -81,7 +81,7 @@
           <input type="password" id="passeword" name="passeword" required />
         </div>
         <!-- Bouton Sign Up ghadi ywelli orange mn CSS -->
-        <button type="submit" class="btn btn-signin">Sign In</button>
+        <button type="submit" class="btn btn-signup">Sign In</button>
       </form>
     </div>
 
@@ -96,7 +96,7 @@
       <!-- This button should ideally link to your login page -->
       <button
         onclick="window.location.href='sign_up.php'"
-        class="btn btn-signup">
+        class="btn btn-signin">
         Sign Up
       </button>
     </div>
