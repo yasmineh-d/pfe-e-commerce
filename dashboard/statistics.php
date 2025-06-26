@@ -1,4 +1,5 @@
 <?php
+
 session_start(); // Darouri nbda session bach n3arfou wach m-loggi wla la
 
 // HNA L'KHADMA L'MOHIMA: Tcheckiw wach m-loggi
@@ -77,11 +78,72 @@ if (!$conn) {
     // Close the database connection
     mysqli_close($conn);
 }
+
+session_start();
+
+// Protection: Checki wach l'admin m-loggi.
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+
+// Database connection parameters
+$servername = "localhost";
+$username   = "root";
+$password_db_conn   = ""; // Database connection password
+$dbname     = "efm";
+
+// Create database connection
+$conn = mysqli_connect($servername, $username, $password_db_conn, $dbname);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// ------ Fetch data for Stat Cards ------
+$totalClients = 0;
+$totalOrders = 0;
+$totalProducts = 0;
+
+// Get total clients
+$sqlClients = "SELECT COUNT(*) as count FROM client";
+$resultClients = mysqli_query($conn, $sqlClients);
+if ($resultClients) {
+    $rowClients = mysqli_fetch_assoc($resultClients);
+    $totalClients = $rowClients['count'];
+} else {
+    // Optional: Log an error if query fails
+    error_log("Error fetching client count: " . mysqli_error($conn));
+}
+
+// Get total orders (ADJUST 'commande' IF YOUR TABLE NAME IS DIFFERENT)
+$sqlOrders = "SELECT COUNT(*) as count FROM commande"; // <<< CHANGE 'commande' IF NEEDED
+$resultOrders = mysqli_query($conn, $sqlOrders);
+if ($resultOrders) {
+    $rowOrders = mysqli_fetch_assoc($resultOrders);
+    $totalOrders = $rowOrders['count'];
+} else {
+    error_log("Error fetching order count: " . mysqli_error($conn));
+}
+
+// Get total products (ADJUST 'produit' IF YOUR TABLE NAME IS DIFFERENT)
+$sqlProducts = "SELECT COUNT(*) as count FROM produit"; // <<< CHANGE 'produit' IF NEEDED
+$resultProducts = mysqli_query($conn, $sqlProducts);
+if ($resultProducts) {
+    $rowProducts = mysqli_fetch_assoc($resultProducts);
+    $totalProducts = $rowProducts['count'];
+} else {
+    error_log("Error fetching product count: " . mysqli_error($conn));
+}
+// ------ End Fetch data for Stat Cards ------
+
+mysqli_close($conn);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <!-- ======================================================= -->
     <!--                 META TAGS AND LINKS                     -->
     <!-- ======================================================= -->
@@ -130,10 +192,143 @@ if (!$conn) {
                         <a href="../dashboard/product.php">
                             <i class="fas fa-box-open"></i> <!-- Icon for Product -->
                             <span>Product</span>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Statistics</title>
+    <link rel="stylesheet" href="../css/statistics.css"> <!-- Your main dashboard CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+        /* Styles for Stat Cards (can be moved to statistics.css if preferred) */
+        .stat-cards-container {
+            display: flex;
+            justify-content: space-around;
+            /* Distributes space around items */
+            flex-wrap: wrap;
+            /* Allows cards to wrap to next line on smaller screens */
+            gap: 25px;
+            /* Space between cards */
+            padding: 20px 10px;
+            /* Padding around the container of cards */
+            margin-top: 20px;
+            /* Space above the cards */
+        }
+
+        .stat-card {
+            background-color: #fff;
+            /* White background for cards */
+            border-radius: 15px;
+            /* Rounded corners like in the image */
+            padding: 25px 20px;
+            /* Padding inside cards */
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+            /* Slightly more pronounced shadow */
+            flex-grow: 1;
+            /* Allow cards to grow to fill space */
+            flex-basis: 260px;
+            /* Base width before growing/shrinking */
+            max-width: 320px;
+            /* Max width for a card */
+            box-sizing: border-box;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card .card-icon {
+            font-size: 3em;
+            /* Icon size */
+            color: #ffc107;
+            /* Yellow color for icons, consistent with image */
+            margin-bottom: 15px;
+        }
+
+        .stat-card .card-title {
+            font-size: 1.1em;
+            /* Title text size */
+            color: #333;
+            /* Title color */
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .stat-card .card-value {
+            font-size: 2.8em;
+            /* Large number for the value */
+            color: #111;
+            /* Value color */
+            font-weight: 700;
+            /* Bold value */
+        }
+
+        /* Responsive adjustments for stat cards */
+        @media (max-width: 992px) {
+
+            /* For tablets */
+            .stat-cards-container {
+                gap: 20px;
+            }
+
+            .stat-card {
+                flex-basis: calc(50% - 20px);
+                /* 2 cards per row, accounting for gap */
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            /* For mobile phones */
+            .stat-cards-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .stat-card {
+                flex-basis: 85%;
+                /* Take up more width when stacked */
+                width: 85%;
+                max-width: 350px;
+            }
+        }
+
+        /* Ensure variables like --content-bg, --title-text from statistics.css are used by .container, .content, .title */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ====================== SIDEBAR ====================== -->
+        <nav class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <img src="../images/logo_Y.png" alt="logo"> <!-- Make sure this path is correct -->
+                </div>
+                <ul class="nav-links">
+                    <li class="active"> <!-- Statistics page is active -->
+                        <a href="statistics.php">
+                            <i class="fas fa-tachometer-alt"></i><span>Statistique</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.php">
+                            <i class="fas fa-users"></i><span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product.php">
+                            <i class="fas fa-box-open"></i><span>Product</span>
                         </a>
                     </li>
                 </ul>
             </div>
+
             <!-- --- Bottom section of the sidebar --- -->
             <div class="sidebar-bottom">
                 <!-- Secondary navigation links (settings, log out) -->
@@ -148,11 +343,24 @@ if (!$conn) {
                         <a href="../dashboard/logout.php">
                             <i class="fas fa-sign-out-alt"></i> <!-- Icon for Log out -->
                             <span>Log out</span>
+
+            <div class="sidebar-bottom">
+                <ul class="nav-links">
+                    <li>
+                        <a href="settings.php">
+                            <i class="fas fa-cog"></i><span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout.php">
+                            <i class="fas fa-sign-out-alt"></i><span>Log out</span>
+
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
+
 
         <!-- ======================================================= -->
         <!--                    MAIN CONTENT AREA                    -->
@@ -187,6 +395,32 @@ if (!$conn) {
                     <p class="card-value"><?php echo $totalProducts; ?></p> <!-- Displays the total number of products -->
                 </div>
             </div>
+        <!-- =================== MAIN CONTENT ==================== -->
+        <main class="content">
+            <h1 class="title">Dashboard</h1> <!-- Title for the statistics page -->
+
+            <!-- Stat Cards Section -->
+            <div class="stat-cards-container">
+                <div class="stat-card">
+                    <i class="fas fa-users card-icon"></i>
+                    <p class="card-title">Total Of Clients</p>
+                    <p class="card-value"><?php echo htmlspecialchars($totalClients); ?></p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-invoice card-icon"></i> <!-- Alt: fa-shopping-bag, fa-list-alt -->
+                    <p class="card-title">Total Of Orders</p>
+                    <p class="card-value"><?php echo htmlspecialchars($totalOrders); ?></p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-box card-icon"></i> <!-- Alt: fa-cubes, fa-archive -->
+                    <p class="card-title">Total Of Product</p>
+                    <p class="card-value"><?php echo htmlspecialchars($totalProducts); ?></p>
+                </div>
+            </div>
+            <!-- End Stat Cards Section -->
+
+            <!-- You can add more content here if needed, like charts or recent activity -->
+
         </main>
     </div>
 </body>

@@ -1,9 +1,20 @@
 <?php
+
 session_start(); // Important for managing login state
 
 // Tchecki wach l'admin m-loggi. Ila la, sardo l page dial login.
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header('Location: login.php'); // Sardo l login
+    exit;
+}
+
+
+
+session_start();
+
+// Protection: Checki wach l'admin m-loggi.
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: login.php');
     exit;
 }
 
@@ -14,15 +25,20 @@ $username   = "root";
 $password   = "";
 $dbname     = "efm";
 
+
 $adminEmail = '';
 $adminName = '';
 $updateMessage = ''; // Bch n'affichiw les messages hna
+=======
+$updateMessage = ''; // Bach n'affichiw les messages
+
 
 // Create database connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
 
 // Fetch current admin details from 'client' table.
 // Hna, ghadi njiboh b l'ID aw l'email li stockina f session melli dar login.
@@ -65,11 +81,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sqlUpdateAdmin = "UPDATE client SET email = ?, nom = ? WHERE email = ?";
         $paramsToBind[] = $oldEmail;
         $types = "sss";
+
+// ------ Handle form submission first ------
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $currentAdminId = $_SESSION['admin_id']; // L'ID dial l'admin li ghadi nbedlo lih
+    $newEmail = $_POST['admin_email'];
+    // Hna ma kan7tajoch "nom", 7it la table "utilisateur" ma fihach "nom"
+    $newPassword = $_POST['admin_password'];
+
+    $paramsToBind = [$newEmail];
+    $types = "s";
+
+    // Ghadi nbedlo l'mot de passe GHI ILA l'user kteb chi 7aja f l'input.
+    if (!empty($newPassword)) {
+        // Hna mab9inach kandiro HASH. Ghandiroh nichan.
+        $sqlUpdateAdmin = "UPDATE utilisateur SET email = ?, password = ? WHERE id = ?";
+        $paramsToBind[] = $newPassword; // Kan zidoh nichan
+        $paramsToBind[] = $currentAdminId;
+        $types = "ssi"; // string, string, integer (ID)
+    } else {
+        // Ila maktebch mot de passe jdid, ghadi nbedlo ghir l'email.
+        $sqlUpdateAdmin = "UPDATE utilisateur SET email = ? WHERE id = ?";
+        $paramsToBind[] = $currentAdminId;
+        $types = "si"; // string, integer (ID)
+
     }
 
     $stmtUpdate = mysqli_prepare($conn, $sqlUpdateAdmin);
 
     if ($stmtUpdate) {
+
         // mysqli_stmt_bind_param tekheles min le nombre d'arguments
         mysqli_stmt_bind_param($stmtUpdate, $types, ...$paramsToBind);
 
@@ -79,18 +120,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updateMessage = "<p style='color: green; text-align: center;'>Settings updated successfully!</p>";
         } else {
             error_log("Error updating admin settings: " . mysqli_error($conn));
+
+        mysqli_stmt_bind_param($stmtUpdate, $types, ...$paramsToBind);
+        if (mysqli_stmt_execute($stmtUpdate)) {
+            // Update l'session dialo b l'email jdid
+            $_SESSION['admin_email'] = $newEmail;
+            $updateMessage = "<p style='color: green; text-align: center;'>Settings updated successfully!</p>";
+        } else {
+
             $updateMessage = "<p style='color: red; text-align: center;'>Error updating settings.</p>";
         }
         mysqli_stmt_close($stmtUpdate);
     } else {
+
         error_log("Error preparing update statement: " . mysqli_error($conn));
         $updateMessage = "<p style='color: red; text-align: center;'>Error preparing update statement.</p>";
     }
 }
+
+        $updateMessage = "<p style='color: red; text-align: center;'>Error preparing update statement.</p>";
+    }
+}
+
+// ----- Fetch current admin details from SESSION for display -----
+// Hna kanjibo l'ma3loumat men l session li déja mkhznin
+$adminEmail = isset($_SESSION['admin_email']) ? htmlspecialchars($_SESSION['admin_email']) : 'email@not.found';
+
+// La table "utilisateur" ma fihach "nom", dakchi 3lach ghadi n7aydouh men l'form.
+
 mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,6 +189,117 @@ mysqli_close($conn);
                         <input type="text" id="admin_name" name="admin_name" value="<?php echo $adminName; ?>" required />
                     </div>
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+        .settings-content {
+            background-color: var(--content-bg);
+            padding: 30px;
+            border-radius: var(--card-border-radius);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .settings-content h2 {
+            color: var(--title-text);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--card-label-text);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .password-note {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ====================== SIDEBAR ====================== -->
+        <nav class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <img src="../images/logo_Y.png" alt="logo">
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="statistics.php">
+                            <i class="fas fa-tachometer-alt"></i><span>Statistique</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.php">
+                            <i class="fas fa-users"></i><span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product.php">
+                            <i class="fas fa-box-open"></i><span>Product</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-bottom">
+                <ul class="nav-links">
+                    <li class="active"> <!-- HNA DERNA L'CLASS ACTIVE -->
+                        <a href="settings.php">
+                            <i class="fas fa-cog"></i><span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout.php">
+                            <i class="fas fa-sign-out-alt"></i><span>Log out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- =================== MAIN CONTENT ==================== -->
+        <main class="content">
+            <h1 class="title">Settings</h1>
+            <?php echo $updateMessage; // Afficher le message dial l'update hna 
+            ?>
+            <div class="settings-content">
+                <h2>Admin Account Settings</h2>
+                <form action="settings.php" method="POST">
+                    <!-- 7ayedna l'khana dial l'ism 7it ma kaynach f table "utilisateur" -->
+
+
                     <div class="form-group">
                         <label for="admin_email">Admin Email:</label>
                         <input type="email" id="admin_email" name="admin_email" value="<?php echo $adminEmail; ?>" required />
@@ -146,4 +319,5 @@ mysqli_close($conn);
         </main>
     </div>
 </body>
+
 </html>
