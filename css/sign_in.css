@@ -382,7 +382,6 @@ body {
   right: 0;
   bottom: 0;
   background: url("../images/singn.jpg") center/cover no-repeat;
-
   z-index: -1; /* Behind form-section and info-section */
   filter: blur(3px);
   transform: scale(1.05); /* Ensure blur covers edges */
@@ -426,6 +425,7 @@ body {
   font-weight: 500;
   color: #555;
   font-size: 14px;
+  text-align: left; /* Explicitly set to left */
 }
 
 .input-group input {
@@ -498,9 +498,9 @@ body {
 .info-section p {
   font-size: 17px;
   margin-bottom: 25px;
-  opacity: 1; /* Sla7tha, opacity khass tkoun bin 0 o 1 */
-  color: white; /* Zedt hadi bach lktaba tkoun bayda */
-  font-weight: bold; /* Zedt hadi bach lktaba tkoun ghlita (bold) */
+  opacity: 1;
+  color: white;
+  font-weight: bold;
 }
 
 .btn-signin {
