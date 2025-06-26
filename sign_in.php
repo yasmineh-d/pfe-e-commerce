@@ -69,7 +69,7 @@
     <!--          LJIHA LISSRYA: FORM DYAL CREATE ACCOUNT      -->
     <!-- ======================================================= -->
     <div class="form-section">
-      <h1>Create Account</h1>
+      <h1>Sign In</h1>
       <form action="#">
         <div class="input-group">
           <label for="email">Email</label>
@@ -81,7 +81,7 @@
           <input type="password" id="passeword" name="passeword" required />
         </div>
         <!-- Bouton Sign Up ghadi ywelli orange mn CSS -->
-        <button type="submit" class="btn btn-signup">Sign Up</button>
+        <button type="submit" class="btn btn-signin">Sign In</button>
       </form>
     </div>
 
@@ -96,8 +96,8 @@
       <!-- This button should ideally link to your login page -->
       <button
         onclick="window.location.href='sign_up.php'"
-        class="btn btn-signin">
-        Sign In
+        class="btn btn-signup">
+        Sign Up
       </button>
     </div>
   </div>
