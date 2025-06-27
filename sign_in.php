@@ -1,27 +1,103 @@
+<?php
+// ===== 1. KANBDAMO SESSION =====
+session_start();
+
+// Ghadi nkhliw had variable khawya, ghadi n3emroha ila kan chi ghalat
+$error_message = "";
+
+// ===== 2. KANVÉRIFIW ILA L'UTILISATEUR CLIKA 3LA BUTTON "Sign In" =====
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // ---- Connexion à la base de données ----
+    $servername = "localhost";
+    $username = "root";
+    $password_db = "";
+    $dbname = "efm";
+
+    // Création de la connexion
+    $conn = new mysqli($servername, $username, $password_db, $dbname);
+
+    // Vérification de la connexion
+    if ($conn->connect_error) {
+        die("Connection Failed: " . $conn->connect_error);
+    }
+
+    // ---- Récupération des données du formulaire ----
+    $email = trim($_POST['email']);
+    $password_text = trim($_POST['password']);
+
+    // ---- Préparation de la requête SQL (b tariqa amina) ----
+    // === HNA L'MODIFICATION LWA7IDA: Beddelna "id" b "id_client" ===
+    $sql = "SELECT id_client, nom, email, password FROM client WHERE email = ?";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // ---- Vérification des résultats ----
+    if ($result->num_rows == 1) {
+        // L9ina l'utilisateur, daba ghadi n vérifiw l password
+        $user = $result->fetch_assoc();
+
+        if (password_verify($password_text, $user['password'])) {
+            // Lkolchi s7i7!
+
+            // === HNA L'MODIFICATION TANYA: Beddelna $user['id'] b $user['id_client'] ===
+            $_SESSION['user_id'] = $user['id_client'];
+            $_SESSION['user_nom'] = $user['nom'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['is_logged_in'] = true;
+
+            // Kansiftoh l page dyal l'accueil (home.php)
+            header("Location: home.php");
+            exit();
+
+        } else {
+            // L password ghalet
+            $error_message = "L'email ou le mot de passe est incorrect.";
+        }
+    } else {
+        // L'email makaynch f la base de données
+        $error_message = "L'email ou le mot de passe est incorrect.";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homelectronique</title>
+    <title>Homelectronique - Sign In</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/sign_in.css" />
-    <!-- Ensure 'sign_in.css' is the correct path to your CSS file -->
     <style>
       .forgot-password-link {
-        display: block; /* Makes the link take its own line */
-        margin-top: 15px; /* Adds space above the link */
-        color: #555; /* A greyish color for the text */
-        text-decoration: none; /* Removes the underline */
-        font-size: 14px; /* Makes the font smaller */
-        text-align: center; /* Centers only this link */
-        cursor: pointer; /* Ywelli l'cursor 3la chkel yd */
+        display: block;
+        margin-top: 15px;
+        color: #555;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+        cursor: pointer;
       }
       .forgot-password-link:hover {
-        text-decoration: underline; /* Adds underline on hover */
+        text-decoration: underline;
+      }
+      .error-message { /* Style jdid bach nbayno l'erreur */
+        color: #D8000C;
+        background-color: #FFD2D2;
+        border: 1px solid #D8000C;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
       }
     </style>
   </head>
@@ -58,20 +134,20 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- ======================================================= -->
-    <!--          CONTAINER LKBIR LI JAME3 KOULCHI (Auth)      -->
-    <!-- ======================================================= -->
     <div class="auth-container">
-      
-      <!-- ======================================================= -->
-      <!--          LJIHA LISSRYA: SECTION DYAL LES FORMS         -->
-      <!-- ======================================================= -->
       <div class="form-section">
         
-        <!-- ===== FORMULAIRE N°1: SIGN IN (Kayban f lowel) ===== -->
         <div id="signInFormContainer">
           <h1>Sign In</h1>
-          <form action="#">
+
+          <?php
+          // HNA FIN GHADI NBAYNO MESSAGE DYAL L'ERREUR ILA KAN
+          if (!empty($error_message)) {
+              echo '<div class="error-message">' . $error_message . '</div>';
+          }
+          ?>
+          
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="input-group">
               <label for="email">Email</label>
               <input type="email" id="email" name="email" required />
@@ -81,13 +157,10 @@
               <input type="password" id="password" name="password" required />
             </div>
             <button type="submit" class="btn btn-signup">Sign In</button>
-            
-            <!-- Lien li kay3iyet l JavaScript bach ybeddel l'form -->
             <a onclick="showForgotPasswordForm()" class="forgot-password-link">Forgot your password?</a>
           </form>
         </div>
 
-        <!-- ===== FORMULAIRE N°2: FORGOT PASSWORD (Mkhabbi f lowel) ===== -->
         <div id="forgotPasswordFormContainer" style="display: none;">
             <h1>Forgot Password</h1>
             <p style="text-align: center; margin-bottom: 20px; color: #666;">Enter your email and phone number to reset your password.</p>
@@ -101,29 +174,20 @@
                 <input type="tel" id="phone" name="phone" required />
               </div>
               <button type="submit" class="btn btn-signup">Send Reset Instructions</button>
-              <!-- Lien bach trje3 l Sign In form -->
               <a onclick="showSignInForm()" class="forgot-password-link" style="margin-top:20px;">Back to Sign In</a>
             </form>
         </div>
-
       </div>
 
-      <!-- ======================================================= -->
-      <!--          LJIHA LIMNYA: MESSAGE D'ACCUEIL W SIGN UP    -->
-      <!-- ======================================================= -->
       <div class="info-section">
         <h2>WELCOME BACK!</h2>
-        <p>Already have an account click below to continue using the service.</p>
-        <button
-          onclick="window.location.href='sign_up.php'"
-          class="btn btn-signin"
-        >
+        <p>Don't have an account yet? Join us!</p>
+        <button onclick="window.location.href='sign_up.php'" class="btn btn-signin">
           Sign Up
         </button>
       </div>
     </div>
-    <!-- Auth Container End -->
-
+    
     <!-- Footer Section Start -->
     <footer id="contact" class="site-footer">
       <div class="footer-container">
@@ -160,23 +224,17 @@
       </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- ================================================== -->
-    <!--         HNA FIN KAYN L'CODE JAVASCRIPT             -->
-    <!-- ================================================== -->
+    
     <script>
-      // Had l function kat khabbi l form dyal Sign In o kat beyyen dyal Forgot Password
       function showForgotPasswordForm() {
         document.getElementById('signInFormContainer').style.display = 'none';
         document.getElementById('forgotPasswordFormContainer').style.display = 'block';
       }
 
-      // Had l function kat dir l3eks, kat rje3 l form dyal Sign In
       function showSignInForm() {
         document.getElementById('forgotPasswordFormContainer').style.display = 'none';
         document.getElementById('signInFormContainer').style.display = 'block';
       }
     </script>
-
   </body>
 </html>
