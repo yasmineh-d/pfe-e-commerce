@@ -194,8 +194,8 @@
         <div class="footer-column">
           <h4>Contact</h4>
           <div class="contact-icons">
-            <a href="#"><img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" /></a>
-            <a href="#"><img src="images/gmail-svgrepo-com.svg" alt="Gmail" /></a>
+            <a href="https://web.whatsapp.com/"><img src="images/whatsapp-svgrepo-com.svg" alt="WhatsApp" /></a>
+            <a href="https://mail.google.com/"><img src="images/gmail-svgrepo-com.svg" alt="Gmail" /></a>
           </div>
         </div>
 
@@ -203,10 +203,10 @@
         <div class="footer-column">
           <h4>Follow Us</h4>
           <div class="social-icons">
-            <a href="#" class="social-icon facebook-bg"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon twitter-bg"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon linkedin-bg"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-icon instagram-bg"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/?locale=fr_FR" class="social-icon facebook-bg"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" class="social-icon twitter-bg"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/feed" class="social-icon linkedin-bg"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon instagram-bg"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
